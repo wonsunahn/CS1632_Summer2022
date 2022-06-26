@@ -9,12 +9,12 @@ AFIST = [_A Friendly Introduction to Software Testing_](software-quality-assuran
   
 * Class 2: Test Plans Lecture (READING: AFIST, Chapters 6, 8) / Defects Lecture (READING: AFIST, Chapters 9)
   * Prerequisite: Do the [Java Assessment Exercise](exercises/0)
-  * Prerequisite: Fill out the Partnership Contract
 
 ## WEEK 2 (Week of 4 JUL)
 
 * Class 1: In-class Exercise 1: Test Plans / Release Deliverable 1
   * Prerequisite: Breaking Software Lecture (READING: AFIST, Chapters 7) + TopHat Questions
+  * Prerequisite: Submit the Partnership Contract on GradeScope
 
 * Class 2: In-class Exercise 2: Unit Testing / Release Deliverable 2
   * Prerequisite: Automated and Manual Testing Lecture (READING: AFIST, Chapter 12) + TopHat Questions
