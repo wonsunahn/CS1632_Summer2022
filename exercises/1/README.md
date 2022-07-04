@@ -223,6 +223,7 @@ The report should start with a cover page with:
 * The names of the people in the group
 
 Write a short introduction that includes:
+* IDENTIFIER of one base case and why you think it is a base case.
 * IDENTIFIER of one edge case and why you think it is an edge case.
 * IDENTIFIER of one corner case and why you think it is a corner case.
 
