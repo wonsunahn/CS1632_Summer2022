@@ -292,7 +292,7 @@ discuss.  Once you are both satisfied, you may submit.
 
 ## Extra Credit
 
-* DUE: July 12 (Tuesday), 2022 11:30 AM
+* DUE: July 19 (Tuesday), 2022 11:30 AM
 
 This submission is optional.  An extra credit of 1 point out of 100 points for
 the entire course will be awarded to the group that finds the most number of
