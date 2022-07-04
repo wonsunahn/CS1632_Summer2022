@@ -26,7 +26,7 @@ AFIST = [_A Friendly Introduction to Software Testing_](software-quality-assuran
 
 * Deliverable 1 due Tuesday 11:30 AM
 
-* Class 1: In-class Supplementary Exercise 2: Behavior Driven Development
+* Class 1: In-class Supplementary Exercise 1: Behavior Driven Development
   * Prerequisite: Behavior Driven Development Lecture + TopHat Questions
   * Prerequisite: Writing Testable Code Lecture (READING: AFIST, Chapter 16) + TopHat Questions
 
@@ -35,6 +35,13 @@ AFIST = [_A Friendly Introduction to Software Testing_](software-quality-assuran
 
 * Midterm 1 on GradeScope: TBD
   
+* Midterm 1 on GradeScope: July 15 (Friday) 10:00 AM - July 17 (Sunday) 11:59 PM
+  * Check out the **[study guide](/study_guides/midterm_1_study_guide.md)**!
+  * Will be posted as link named "Midterm 1" at Friday 10:00 AM.
+  * You will choose a 3 hour span to complete exam within the above 3-day period.
+  * Your 3 hours begin the moment you click on link and agree to the terms on the next screen.
+  * Open book but individual work.
+
 ## WEEK 4 (Week of 18 JUL)
 
 * Deliverable 2 due Tuesday 11:30 AM
@@ -42,14 +49,14 @@ AFIST = [_A Friendly Introduction to Software Testing_](software-quality-assuran
 * Class 1: In-class Exercise 4: Performance Testing / Release Deliverable 4
   * Prerequisite: Performance Testing Lecture (READING: AFIST, Chapter 19) + TopHat Questions
 
-* Class 2: In-class Supplementary Exercise 3: Property-based Testing
+* Class 2: In-class Supplementary Exercise 2: Property-based Testing
   * Prerequisite: Stochastic and Property-Based Testing Lecture (READING: AFIST, Chapter 18) + TopHat Questions
 
 ## WEEK 5 (Week of 25 JUL)
 
 * Deliverable 3 due Tuesday 11:30 AM
 
-* Class 1: In-class Supplementary Exercise 1: Testing Nondeterministic Software
+* Class 1: In-class Supplementary Exercise 3: Testing Nondeterministic Software
   * Prerequisite: Software QA and Nondeterminism Lecture + TopHat Questions
 
 * Class 2: In-class Exercise 5: Static Analysis / Release Deliverable 5
