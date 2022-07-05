@@ -170,7 +170,7 @@ This is the correct format for defects -
 	 OBSERVED BEHAVIOR: [What you *ACTUALLY* saw]
 ```
 
-Please refer to [Lecture 5: Defects](../../lectures/CS1632_Lecture5_Defects.pdf) Slides 15 - 22
+Please refer to [Lecture 5: Defects](../../lectures/CS1632_Lecture5_Defects.pdf) Slides 13 - 27
 for more details and examples for each item.  Optional bug report items
 such as SEVERITY or IMPACT were not included for this exercise.
 
