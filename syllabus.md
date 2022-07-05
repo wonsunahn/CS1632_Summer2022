@@ -33,8 +33,8 @@ AFIST = [_A Friendly Introduction to Software Testing_](software-quality-assuran
 * Class 2: In-class Exercise 3: Automated System Testing / Release Deliverable 3
   * Prerequisite: Automated System Testing Lecture + TopHat Questions
 
-* Midterm 1 on GradeScope: TBD
-  
+* July 14 (Thursday) 4:00 - 5:00 PM Midterm 1 Review on Zoom (will be recorded)
+
 * Midterm 1 on GradeScope: July 15 (Friday) 10:00 AM - July 17 (Sunday) 11:59 PM
   * Check out the **[study guide](/study_guides/midterm_1_study_guide.md)**!
   * Will be posted as link named "Midterm 1" at Friday 10:00 AM.
