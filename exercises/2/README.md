@@ -23,7 +23,7 @@ Summer Semester 2022 - Exercise 2
 
 * DUE: July 12 (Tuesday), 2022 11:30 AM
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/ICHUm7XF
 
 ## Before You Begin
 
