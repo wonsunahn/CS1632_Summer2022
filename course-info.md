@@ -151,7 +151,7 @@ Exercises will be **released on Tuesdays** in class.  You will be given time
 in-class on Tuesday to complete it and if you don't, you can keep working on it
 on Thursday as well.  On Thursday, we will discuss the exercise and you will
 have a chance to ask questions if you had any difficulties.  You can finish up
-and **submit by Friday midnight**.
+and **submit by the start of the next class**.
 
 * **Exercise 0:** Java assessment exercise
 * **Exercises 1-5:** Exercises that prepare you for the corresponding deliverable (see below)
