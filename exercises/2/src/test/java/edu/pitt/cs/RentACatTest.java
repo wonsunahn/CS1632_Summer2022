@@ -20,7 +20,7 @@ public class RentACatTest {
 	 * test case.
 	 */
 
-	RentACat r; // Object to test
+	RentACat r;    // Object to test
 	Cat c1; // First mock cat object
 	Cat c2; // Second mock cat object
 	Cat c3; // Third mock cat object
