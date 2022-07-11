@@ -3,17 +3,17 @@
   * [Prerequisites](#prerequisites)
   * [The Maven Build System](#the-maven-build-system)
   * [Running Cucumber Tests](#running-cucumber-tests)
-    + [Running Cucumber Tests on Eclipse](#running-cucumber-tests-on-eclipse)
+    + [Running Cucumber Tests on VSCode](#running-cucumber-tests-on-vscode)
     + [Running Cucumber Tests on Commandline](#running-cucumber-tests-on-commandline)
     + [Expected Outcome](#expected-outcome)
   * [What To Do](#what-to-do)
     + [Updating RentACatImpl.java](#updating-rentacatimpljava)
     + [Adding Steps in StepDefinitions.java for the "rent cats" Feature](#adding-steps-in-stepdefinitionsjava-for-the--rent-cats--feature)
     + [Further Modifying StepDefinitions.java and User Story for the "return cats" Feature](#further-modifying-stepdefinitionsjava-and-user-story-for-the--return-cats--feature)
-  * [Submission](#submission)
-    + [GradeScope Feedback](#gradescope-feedback)
-  * [Groupwork Plan](#groupwork-plan)
-  * [Resources](#resources)
+- [Submission](#submission)
+- [GradeScope Feedback](#gradescope-feedback)
+- [Groupwork Plan](#groupwork-plan)
+- [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
 Summer Semester 2022 - Supplementary Exercise 1
@@ -245,7 +245,7 @@ Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.983 sec
 Congratulations!  If you have time, try to complete the other 4 scenarios in
 rent_a_cat_return_cats.feature and see if you can have them pass too!
 
-## Submission
+# Submission
 
 Each pairwise group will do one submission to GradeScope as usual.  The
 submitting member must use the "View or edit group" link at the top-right
@@ -257,7 +257,7 @@ will run the autograder to grade you and give feedback.  If you get deductions,
 fix your code based on the feedback and resubmit.  Repeat until you don't get
 deductions.
 
-### GradeScope Feedback
+# GradeScope Feedback
 
 The feedback you get from the GradeScope autograder is based on the Cucumber
 summary output.  For example, if you get the following output:
@@ -270,13 +270,13 @@ Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
 
 There were 9 failures and 1 errors so the final score is: 14 - 9 - 1 = 4.
 
-## Groupwork Plan
+# Groupwork Plan
 
 For this exercise, I recommend that you both try to do the full exercise to get
 the full range of experience with Gherkin and Cucumber.  Compare your solutions
 in the end, discuss, and submit!
 
-## Resources
+# Resources
 
 * Gherkin Syntax Reference:  
 https://cucumber.io/docs/gherkin/reference/
