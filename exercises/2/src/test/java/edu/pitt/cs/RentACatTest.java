@@ -37,7 +37,7 @@ public class RentACatTest {
 
 		// 2. Create an unrented mock Cat with ID 1 and name "Jennyanydots", assign to c1
 		// TODO: Fill in
-		
+		c1.Mockito.mock(Cat.class);
 		// 3. Create an unrented mock Cat with ID 2 and name "Old Deuteronomy", assign to c2
 		// TODO: Fill in
 
