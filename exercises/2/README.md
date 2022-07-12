@@ -133,7 +133,7 @@ compiled to class files under target/classes.
 1. Next, invoke the 'exec' phase designating RentACatImpl class:
 
    ```
-   mvn exec:java -Dexec.mainClass=edu.pitt.cs.RentACatImpl
+   mvn exec:java -D"exec.mainClass"="edu.pitt.cs.RentACatImpl"
    ```
 
    And then, try listing the cats available for rent:
