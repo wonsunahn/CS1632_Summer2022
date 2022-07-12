@@ -55,7 +55,7 @@ mvn compile
 ```
 
 ```
-mvn exec:java -Dexec.mainClass=edu.pitt.cs.Game
+mvn exec:java -D"exec.mainClass"="edu.pitt.cs.Game"
 ```
 
 When you run it as-is, you will suffer an exception and crash:
