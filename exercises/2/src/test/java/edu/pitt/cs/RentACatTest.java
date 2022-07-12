@@ -192,7 +192,7 @@ public class RentACatTest {
 	 * Postconditions: Return value is false.
 	 *                 c1.rentCat(), c2.rentCat(), c3.rentCat() are never called.
 	 *                 
-	 * Hint: See Example/NoogieTest.java in testBadgerPlayCalled method to see an
+	 * Hint: See sample_code/mockito_example/NoogieTest.java in testBadgerPlayCalled method to see an
 	 * example of behavior verification.
 	 */
 	
