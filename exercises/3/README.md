@@ -5,7 +5,7 @@
     + [Other Tips](#other-tips)
   * [Task 2: Add test cases to test suite and save project](#task-2-add-test-cases-to-test-suite-and-save-project)
   * [Task 3: Export test suite to JUnit class](#task-3-export-test-suite-to-junit-class)
-    + [Why export to a JUnit class?](#why-export-to-a-junit-class-)
+    + [Why export to a JUnit class?](#why-export-to-a-junit-class)
     + [How to export to JUnit for Selenium IDE](#how-to-export-to-junit-for-selenium-ide)
     + [JUnit set up (Chrome browser specific)](#junit-set-up-chrome-browser-specific-)
     + [JUnit set up (Firefox browser specific)](#junit-set-up-firefox-browser-specific-)
