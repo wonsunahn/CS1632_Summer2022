@@ -1,18 +1,18 @@
 - [CS 1632 - Software Quality Assurance](#cs-1632---software-quality-assurance)
   * [Description](#description)
-  * [Task 1: Write test cases](#task-1--write-test-cases)
+  * [Task 1: Write test cases](#task-1-write-test-cases)
     + [Tips for Writing assertions for each Test](#tips-for-writing-assertions-for-each-test)
     + [Other Tips](#other-tips)
-  * [Task 2: Add test cases to test suite and save project](#task-2--add-test-cases-to-test-suite-and-save-project)
-  * [Task 3: Export test suite to JUnit class](#task-3--export-test-suite-to-junit-class)
+  * [Task 2: Add test cases to test suite and save project](#task-2-add-test-cases-to-test-suite-and-save-project)
+  * [Task 3: Export test suite to JUnit class](#task-3-export-test-suite-to-junit-class)
     + [Why export to a JUnit class?](#why-export-to-a-junit-class-)
     + [How to export to JUnit for Selenium IDE](#how-to-export-to-junit-for-selenium-ide)
-    + [JUnit set up (Chrome browser specific)](#junit-set-up--chrome-browser-specific-)
-    + [JUnit set up (Firefox browser specific)](#junit-set-up--firefox-browser-specific-)
+    + [JUnit set up (Chrome browser specific)](#junit-set-up-chrome-browser-specific-)
+    + [JUnit set up (Firefox browser specific)](#junit-set-up-firefox-browser-specific-)
     + [Running the JUnit class](#running-the-junit-class)
   * [Tips for JUnit + Selenium problem solving](#tips-for-junit---selenium-problem-solving)
-    + [How to disable pop-ups (Chrome browser specific)](#how-to-disable-pop-ups--chrome-browser-specific-)
-    + [How to disable pop-ups (Firefox browser specific)](#how-to-disable-pop-ups--firefox-browser-specific-)
+    + [How to disable pop-ups (Chrome browser specific)](#how-to-disable-pop-ups-chrome-browser-specific-)
+    + [How to disable pop-ups (Firefox browser specific)](#how-to-disable-pop-ups-firefox-browser-specific-)
 - [Submission](#submission)
 - [GradeScope Feedback](#gradescope-feedback)
 - [Groupwork Plan](#groupwork-plan)
@@ -25,7 +25,7 @@
 
 * DUE: July 19 (Tuesday), 2022 11:30 AM
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/QLZl5L-l
 
 ## Description
 
