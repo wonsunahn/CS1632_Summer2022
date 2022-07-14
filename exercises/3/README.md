@@ -196,8 +196,13 @@ Follow these instructions:
    "Include step descriptions as a separate comment" to generate more detailed
 comments.  Leave other boxes unchecked.
 
-1. Save the resulting file into "RedditCatsTest.java" to the root of the
-   exercise 3 directory.
+1. Save the resulting file "RedditCatsTest.java" to the
+   src/test/java/edu/pitt/cs test source directory.
+
+1. Add the following line to the top of "RedditCatsTest.java":
+   ```
+   package edu.pitt.cs;
+   ```
 
 ### JUnit set up (Chrome browser specific)
 
@@ -246,48 +251,49 @@ The Firefox web driver should work for all recent versions of Firefox.
 
 ### Running the JUnit class
 
-You can now run the RedditCatsTest JUnit class using the provided
-[TestRunner.java](TestRunner.java) using one of the following scripts:
-
-* If you are running Windows:
-   ```
-   run.bat
-   ```
-
-* If you are running Mac or Linux:
-   ```
-   bash run.sh
-   ```
-
-* You can also run your Selenium tests on Eclipse using the "Run JUnit"
-  feature, after opening the provided Eclipse project.
+As before, please invoke the Maven test phase:
+```
+mvn test
+```
 
 If things go properly, you will see the browser pop up repeatedly for each test
 case, perform the actions, and close.  In the command line, you should see:
 
 ```
 ...
-ALL TESTS PASSED
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.917 s
+[INFO] Finished at: 2022-07-14T11:04:13-04:00
+[INFO] ------------------------------------------------------------------------
 ```
 
-The line is printed by TestRunner.java if there are no failures.
-
-If you have one or more failed tests, you will see the following line in the end:
-
-```
-...
-!!! - At least one failure, see above.
-```
-
-Please search the output for specific test failures that look like the below:
+If you have one or more failed tests, you will see something like this:
 
 ```
 ...
-fUNSORTBYCOMMENTS(RedditCatsTest): no such element: Unable to locate element: {"method":"css selector","selector":".\_3yqn7UgWZCfM22Sk-rcBbs:nth-child(1) > .cmR5BF4NpBUm3DBMZCmJS"}
+Results :
+
+Tests in error: 
+  fUNSORTBYCOMMENTS(edu.pitt.cs.RedditCatsTest): element click intercepted: Element <button data-testid="search-results-filter-sort" class="cmR5BF4NpBUm3DBMZCmJS _2jNQT-6WbFOjX2hdDWV56w _1g3g98ViMb36cM-peU17Jk BZDMD8yWu5imupa73nqYE">...</button> is not clickable at point (138, 149). Other element would receive the click: <div class="_1DK52RbaamLOWw5UPaht_S _3Ig_EsWWVLquWs2yBBQjec _1acwN_tUhJ8w-n7oCp-Aw3">...</div>(..)
+
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:35 min
+[INFO] Finished at: 2022-07-14T11:00:40-04:00
+[INFO] ------------------------------------------------------------------------
 ...
 ```
 
-Then, modify each test case that fails using tips listed in the next section.
+Please read the failure message and the stack trace for each failure to
+figure out what went wrong.  Then, modify each test case that fails using
+tips listed in the next section.
 
 ## Tips for JUnit + Selenium problem solving
 
