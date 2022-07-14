@@ -18,19 +18,20 @@
 
 # Introduction
 
-You can open the precreated .project file on Eclipse by using the "Open
-Project from File System" menu.  It is a Maven project so you will be able
-to run Cucumber as well as JUnit.  There are a bunch of problems that you
-can solve in this project listed below.  But you can also use this project
-for the purposes of testing code that you write during the exam.  You can
-add new Java and JUnit classes and try running them on the project.
+You can open this folder from VSCode using the "Open Folder" menu.  It is a
+Maven project so you will be able to run Cucumber as well as JUnit.  There are
+a bunch of problems that you can solve in this project listed below.  But you
+can also use this project for the purposes of testing code that you write
+during the exam.  You can add new Java and JUnit classes and try running them
+on the project.
 
 # JUnit Problems
 
-The below test cases can be executed through Run As > JUnit Test on Eclipse
-for individual tests, or Run As > Maven Test if you want to run the entire
-test suite, including the Cucumber tests.  You can also run "mvn test" on
-the commandline as we did for Supplementary Exercise 2.
+Running the Maven test phase will run all JUnit tests (including the Cucumber tests):
+
+```
+mvn test
+```
 
 ## ValueTest.java
 
