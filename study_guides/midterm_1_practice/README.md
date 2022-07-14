@@ -81,11 +81,11 @@ value.getVal() always returns 0 if nextInt(2) returns 0.
 The below scenarios can be executed through Run As > Cucumber Feature on
 Eclipse for individual scenarios, or Run As > Maven Test if you want to run
 the entire test suite, including the JUnit tests.  You can also run "mvn
-test" on the commandline as we did for Supplementary Exercise 2.
+test" on the commandline as we did for Supplementary Exercise 1.
 
 The below scenarios can be executed through Run As > Maven Test on Eclipse
 to run the entire test suite, including the JUnit tests.  You can also
-run "mvn test" on the commandline as we did for Supplementary Exercise 2.
+run "mvn test" on the commandline as we did for Supplementary Exercise 1.
 
 ## Testing Value.java
 
