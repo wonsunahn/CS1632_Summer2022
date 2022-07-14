@@ -97,7 +97,13 @@ Follow these instructions:
    "Include step descriptions as a separate comment" to generate more detailed
 comments.  Leave other boxes unchecked.
 
-1. Save the resulting file into "D3Test.java".
+1. Save the resulting file into "D3Test.java" under the
+   src/test/java/edu/pitt/cs test source directory.  .
+
+1. Add the following line to the top of "RedditCatsTest.java":
+   ```
+   package edu.pitt.cs;
+   ```
 
 1. As in Exercise 3, you will have to also add these lines to the beginning of the @Before
 setUp() method in D3Test.java, depending on whether you are using Chrome of Firefox:
@@ -116,24 +122,18 @@ setUp() method in D3Test.java, depending on whether you are using Chrome of Fire
    Or whatever the path is to your OS compatible Firefox webdriver.  
 
 
-You can now run the D3Test JUnit class using the provided
-[TestRunner.java](TestRunner.java) using one of the following scripts:
+You can now run the D3Test JUnit class using Maven:
 
-* If you are running Windows:
-   ```
-   run.bat
-   ```
+```
+mvn test
+```
 
-* If you are running Mac or Linux:
-   ```
-   run.sh
-   ```
-
-Make sure all tests pass by looking at the TestRunner result (the tests that
-should pass, not the ones that uncover defects of course :).  If there are any
-failures, slightly touch up the D3Test.java Selenium tests to make them pass.
-Although Selenium IDE usually does a good job in the translation, sometimes it
-needs an extra hand.  Refer to the Exercise 3 troubleshooting guide:
+Make sure all tests pass by looking at the results (the tests that should
+pass, not the ones that uncover defects of course :).  If there are any
+failures, slightly touch up the D3Test.java Selenium tests to make them
+pass.  Although Selenium IDE usually does a good job in the translation,
+sometimes it needs an extra hand.  Refer to the Exercise 3 troubleshooting
+guide:
 
 https://github.com/wonsunahn/CS1632_Summer2022/blob/master/exercises/3/README.md#tips-for-junit--selenium-problem-solving
 
