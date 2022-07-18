@@ -18,7 +18,7 @@ Summer Semester 2022 - Exercise 4
 
 * DUE: July 21 (Thursday), 2022 11:30 AM
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/EPQOJoFc
 
 ## Before You Begin
 
@@ -394,7 +394,7 @@ deductions.
 [ReportTemplate.pdf](ReportTemplate.pdf).  On the first page, attach
 hotspots-before.png generated before refactoring.  On the second page, attach
 hotspots-after.png generated after refactoring.  Submit the report to
-GradeScope at the **Exercise 4 Profile** link.  
+GradeScope at the **Exercise 4 Report** link.  
 
 # GradeScope Feedback
 
