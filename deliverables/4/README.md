@@ -315,52 +315,52 @@ expected output is:
    3) Output after injecting bug in method checked by behavior verification:
 The method that does behavior verification should fail.
 
-   If all goes well, you should see the followimg lines at the end of this section:
+      If all goes well, you should see the followimg lines at the end of this section:
 
-   ```
-   PASSED (5/5): Bug injected into real object caused test failures (as it should).
-   PASSED (5/5): Bug injected into mocked object did not cause test failures.
-   PASSED (5/5): Behavior verification correctly detected change in behavior.
-   ```
+      ```
+      PASSED (5/5): Bug injected into real object caused test failures (as it should).
+      PASSED (5/5): Bug injected into mocked object did not cause test failures.
+      PASSED (5/5): Behavior verification correctly detected change in behavior.
+      ```
 
-   If you see FAILED (0/5) instead, you need to fix your tests.  The buggy
+      If you see FAILED (0/5) instead, you need to fix your tests.  The buggy
 implementation with the injected bugs has been included in the repository if
 you want to see what the bugs are with your own eyes.  
 
    1) Output after injecting bug into real object: Since a real object used in
 your test becomes buggy, the test case that uses that real object should fail.
 
-   Try running the following:
+      Try running the following:
 
-   ```
-   java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 real
-   ```
+      ```
+      java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 real
+      ```
 
-   And then create the vertical bar pattern.  Then, try pressing the "Write"
-button and then the "Load" button.  You will be surprised!
+      And then create the vertical bar pattern.  Then, try pressing the "Write"
+   button and then the "Load" button.  You will be surprised!
 
    2) Output after injecting bug into mocked object: Since the code in a mocked
 object is not exercised, the injected bug should have no effect and again, the
 expected output is:
 
-   Try running the following:
+      Try running the following:
 
-   ```
-   java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 mock
-   ```
+      ```
+      java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 mock
+      ```
 
-   And then try running the simulation after creating the vertical bar pattern.  Something is not quite right...
+      And then try running the simulation after creating the vertical bar pattern.  Something is not quite right...
 
    3) Output after injecting bug in method checked by behavior verification:
 The method that does behavior verification should fail.
 
-   Try running the following:
+      Try running the following:
 
-   ```
-   java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 behavior
-   ```
+      ```
+      java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 behavior
+      ```
 
-   Again, try running the simulation after creating the vertical bar pattern.  This is even stranger.
+      Again, try running the simulation after creating the vertical bar pattern.  This is even stranger.
 
    WARNING: Just because you got PASSED on all three, it does not mean that you
 are guaranteed to get points for that rubric item.  You may have passed simply
