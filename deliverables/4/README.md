@@ -2,15 +2,16 @@
   * [Description](#description)
   * [How to Run SlowLifeGUI](#how-to-run-slowlifegui)
   * [What do do](#what-do-do)
-    + [Task 1: Profiling using VisualVM](#task-1-profiling-using-visualvm)
-    + [Task 2: Writing Pinning Tests for the Three Methods](#task-2-writing-pinning-tests-for-the-three-methods)
+    + [Task 1: Profile using VisualVM](#task-1-profile-using-visualvm)
+    + [Task 2: Write Pinning Tests for the Three Methods](#task-2-write-pinning-tests-for-the-three-methods)
     + [Task 3: Refactor the Three Methods](#task-3-refactor-the-three-methods)
+    + [Task 4: Rerun Profiles for the Three Methods](#task-4-rerun-profiles-for-the-three-methods)
   * [Report Format](#report-format)
-  * [Grading](#grading)
-  * [Submission](#submission)
-  * [GradeScope Feedback](#gradescope-feedback)
-  * [Groupwork Plan](#groupwork-plan)
-  * [Resources](#resources)
+- [Grading](#grading)
+- [Submission](#submission)
+- [GradeScope Feedback](#gradescope-feedback)
+- [Groupwork Plan](#groupwork-plan)
+- [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
 Summer Semester 2022
@@ -235,7 +236,8 @@ Exercise 4 on how the Hot spots export file looks like.
 
 ON A SEPARATE PAGE, do the same for the second feature optimized.
 
-## Grading
+# Grading
+
 * Report - 10%
 * Performance tests on your optimized methods (autograder) - 45%
 * Pinning tests on your optimized methods (autograder) - 15%
@@ -249,7 +251,7 @@ autograding.  However, adjustments to your autograded score may follow if you
 make a bad faith attempt at tricking the autograder (e.g. write a pinning test
 that does not properly test the method you are refactoring).
 
-## Submission
+# Submission
 
 Each pairwise group will do one submission to GradeScope as usual.  The
 submitting member must use the "View or edit group" link at the top-right
@@ -265,7 +267,7 @@ don't get deductions.
 
 1. Submit your report to GradeScope at the **Deliverable 4 Report** link.
 
-## GradeScope Feedback
+# GradeScope Feedback
 
 It is encouraged that you submit to GradeScope early and often.  Please use the
 feedback you get on each submission to improve your code!
@@ -344,7 +346,7 @@ assigned through manual grading (hence the 0 points assigned in the
 autograder).  But if you wrote the tests and you see FAILED, then you most
 definitely have a problem.
 
-## Groupwork Plan
+# Groupwork Plan
 
 Just like for Exercise 4, each of you should use VisualVM to profile the
 application and come up with the three methods to refactor.  Note that unlike
@@ -358,7 +360,7 @@ focus more on refactoring, and vice versa, the partner that focused more on
 implementation for Deliverable 2 should now focus more on the pinning tests.
 The goal is for both of you to have a balanced set of experiences.
 
-## Resources
+# Resources
 
 * VisualVM Download:
 https://visualvm.github.io/download.html
