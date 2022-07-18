@@ -327,6 +327,11 @@ The method that does behavior verification should fail.
 implementation with the injected bugs has been included in the repository if
 you want to see what the bugs are with your own eyes.  
 
+# Buggy implementation
+
+Please try the following if you want to try running the buggy implementation
+yourself to see what the bugs are.
+
    1) Output after injecting bug into real object: Since a real object used in
 your test becomes buggy, the test case that uses that real object should fail.
 
