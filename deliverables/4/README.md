@@ -299,7 +299,12 @@ implementation.  If any of the pinning tests fail, you get a -5 deduction.
 behavior verification.  It does three test runs using your
 GameOfLifePinningTest:
 
-   1) Output on correct program: GameOfLifePinningTest tested on a defect-free implementation.  The expected output is:
+   1) Output after injecting bug into real object: Since a real object used in
+your test becomes buggy, the test case that uses that real object should fail.
+
+   2) Output after injecting bug into mocked object: Since the code in a mocked
+object is not exercised, the injected bug should have no effect and again, the
+expected output is:
 
       ```
       --------------------------------------------------------------------
@@ -307,17 +312,8 @@ GameOfLifePinningTest:
       --------------------------------------------------------------------
       ```
 
-   2) Output after injecting bug into real object: GameOfLifePinningTest tested on GameOfLifeBuggy.jar with a bug injected into a real object.  Since a real object used in your test becomes buggy, the test case that uses that real object should fail.
-
-   3) Output after injecting bug into mocked object: GameOfLifePinningTest tested on GameOfLifeBuggy.jar with a bug injected into a mocked object.  Since the code in a mocked object is not exercised, the injected bug should have no effect and again, the expected output is:
-
-      ```
-      --------------------------------------------------------------------
-      ALL TESTS PASSED
-      --------------------------------------------------------------------
-      ```
-
-   4) Output after injecting bug in method checked by behavior verification: GameOfLifePinningTest tested on GameOfLifeBuggy.jar with a bug injected into a method that can only be tested using behavior verification.  The method that does behavior verification should fail.
+   3) Output after injecting bug in method checked by behavior verification:
+The method that does behavior verification should fail.
 
    If all goes well, you should see the followimg lines at the end of this section:
 
@@ -327,20 +323,47 @@ GameOfLifePinningTest:
    PASSED (5/5): Behavior verification correctly detected change in behavior.
    ```
 
-   If you see FAILED instead, you need to fix your tests.  GameOfLifeBuggy.jar
-is included in the repository if you want to do further testing.  Try running
-runBuggyReal.bat, runBuggyMock.bat, and runBuggyBehavior.bat to execute the JAR
-file with real object, mocked object, and behavior verification method bug
-injection respectively (Mac/Linux users can run the *.sh versions).  If you try
-the vertical bar blinker patter specified on GameOfLifePinningTest.java, you
-will see that each version is defective in its own way.  You can also try
-running your GameOfLifePinningTest on the buggy implementation using
-runTestBuggyReal.bat, runTestBuggyMock.bat and runTestBuggyBehavior.bat for the
-three bug injections.  You will see the same output given on the GradeScope
-feedback.
+   If you see FAILED (0/5) instead, you need to fix your tests.  The buggy
+implementation with the injected bugs has been included in the repository if
+you want to see what the bugs are with your own eyes.  
 
-   Just because you got PASSED on all three, it does not mean that you are
-guaranteed to get points for that rubric item.  You may have passed simply
+   1) Output after injecting bug into real object: Since a real object used in
+your test becomes buggy, the test case that uses that real object should fail.
+
+   Try running the following:
+
+   ```
+   java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 real
+   ```
+
+   And then create the vertical bar pattern.  Then, try pressing the "Write"
+button and then the "Load" button.  You will be surprised!
+
+   2) Output after injecting bug into mocked object: Since the code in a mocked
+object is not exercised, the injected bug should have no effect and again, the
+expected output is:
+
+   Try running the following:
+
+   ```
+   java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 mock
+   ```
+
+   And then try running the simulation after creating the vertical bar pattern.  Something is not quite right...
+
+   3) Output after injecting bug in method checked by behavior verification:
+The method that does behavior verification should fail.
+
+   Try running the following:
+
+   ```
+   java -jar libs\game-of-life-buggy-1.0-SNAPSHOT.jar 5 behavior
+   ```
+
+   Again, try running the simulation after creating the vertical bar pattern.  This is even stranger.
+
+   WARNING: Just because you got PASSED on all three, it does not mean that you
+are guaranteed to get points for that rubric item.  You may have passed simply
 because you did not yet write the relevant test!  So in the end, points will be
 assigned through manual grading (hence the 0 points assigned in the
 autograder).  But if you wrote the tests and you see FAILED, then you most
