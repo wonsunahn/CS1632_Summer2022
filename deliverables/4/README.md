@@ -325,7 +325,14 @@ The method that does behavior verification should fail.
 
       If you see FAILED (0/5) instead, you need to fix your tests.  The buggy
 implementation with the injected bugs has been included in the repository if
-you want to see what the bugs are with your own eyes.  
+you want to see what the bugs are with your own eyes (see below).
+
+      CAVEAT: Just because you got PASSED on all three, it does not mean that you
+are guaranteed to get points for that rubric item.  You may have passed simply
+because you did not yet write the relevant test!  So in the end, points will be
+assigned through manual grading (hence the 0 points assigned in the
+autograder).  But if you wrote the tests and you see FAILED, then you most
+definitely have a problem.
 
 # Buggy implementation
 
@@ -366,13 +373,6 @@ The method that does behavior verification should fail.
       ```
 
       Again, try running the simulation after creating the vertical bar pattern.  This is even stranger.
-
-   WARNING: Just because you got PASSED on all three, it does not mean that you
-are guaranteed to get points for that rubric item.  You may have passed simply
-because you did not yet write the relevant test!  So in the end, points will be
-assigned through manual grading (hence the 0 points assigned in the
-autograder).  But if you wrote the tests and you see FAILED, then you most
-definitely have a problem.
 
 # Groupwork Plan
 
