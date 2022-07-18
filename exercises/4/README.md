@@ -207,7 +207,7 @@ VisualVM automatically asks whether to take a snapshot at the end of program
 execution.  In our case, we want to profile the entire run, so we will wait
 until the end to generate a snapshot.
 
-After, opening the snapshot tab, click on the "Hot spots" button to get a list
+After opening the snapshot tab, click on the "Hot spots" button to get a list
 of hot spot methods.  Make sure the "Hot spots" view lists the methods sorted
 in descending order of running time (Self Time).  Now let's try saving the hot
 spots list to a file.  You can export by clicking on the down arrow beside the
