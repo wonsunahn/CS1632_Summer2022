@@ -6,10 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch MonkeySim",
+            "name": "Launch GameOfLife",
             "request": "launch",
-            "mainClass": "edu.pitt.cs.MonkeySim",
-            "projectName": "monkeysim",
+            "mainClass": "edu.pitt.cs.GameOfLife",
+            "projectName": "game-of-life",
             "args": "${command:SpecifyProgramArgs}"
         }
     ]
