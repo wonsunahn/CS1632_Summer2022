@@ -262,7 +262,9 @@ similar method of your own.
 have the freedom to choose what sub-functionality you want to encapsulate
 within a private method.  Also, add at least one unit test that directly tests
 a private method at the very bottom of CoffeeMakerQuestTest.  Use **Java
-reflection** to do this.
+reflection** to do this.  If you don't remember what Java reflection is, please review lectures on unit testing.  Here is a tutorial if you need further help:
+
+  https://www.oracle.com/technical-resources/articles/java/javareflection.html
 
 * Coding style is also important for software quality in the long run (even
   though they are not technically defects as we learned).  In particular, a
