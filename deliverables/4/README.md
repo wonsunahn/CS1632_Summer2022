@@ -10,6 +10,7 @@
 - [Grading](#grading)
 - [Submission](#submission)
 - [GradeScope Feedback](#gradescope-feedback)
+  * [Buggy implementation](#buggy-implementation)
 - [Groupwork Plan](#groupwork-plan)
 - [Resources](#resources)
 
@@ -334,7 +335,7 @@ assigned through manual grading (hence the 0 points assigned in the
 autograder).  But if you wrote the tests and you see FAILED, then you most
 definitely have a problem.
 
-# Buggy implementation
+## Buggy implementation
 
 Please try the following if you want to try running the buggy implementation
 yourself to see what the bugs are.
