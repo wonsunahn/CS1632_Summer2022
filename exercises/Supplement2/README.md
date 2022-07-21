@@ -23,7 +23,7 @@ Summer Semester 2022 - Supplementary Exercise 2
 
 * DUE: July 26 (Tuesday), 2022 11:30 AM 
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/GDJLI79Z
 
 ## Description
 
@@ -432,7 +432,7 @@ https://pholser.github.io/junit-quickcheck/site/1.0/usage/complex-types.html
 
 * DUE: August 2 (Tuesday), 2022 11:30 AM
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/rQmilYW7
 
 This extra credit is worth 1 point out of 100 points for the entire course.
 Note that you need to get 100/100 on the autograder to get credit.  Partial
