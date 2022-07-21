@@ -410,7 +410,7 @@ submitting member must use the "View or edit group" link at the top-right
 corner of the assignment page after submission to add his/her partner.  
 
 Submit the repository created by GitHub Classroom for your team to GradeScope
-at the **Supplementary Exercise 3 GitHub** link.  Once you submit, GradeScope
+at the **Supplementary Exercise 2 GitHub** link.  Once you submit, GradeScope
 will run the autograder to grade you and give feedback.  If you get deductions,
 fix your code based on the feedback and resubmit.  Repeat until you don't get
 deductions.
@@ -430,7 +430,7 @@ https://pholser.github.io/junit-quickcheck/site/1.0/usage/complex-types.html
 
 # Extra Credit
 
-* DUE: Auguset 2 (Tuesday), 2022 11:30 AM
+* DUE: August 2 (Tuesday), 2022 11:30 AM
 
 **GitHub Classroom Link:** TBD
 
@@ -537,5 +537,5 @@ defect), should fail.
 ## Extra Credit Submission
 
 Modify your GitHub classroom repository to perform the above stochastic
-test.  Please submit the repository to a separate **Supplementary Exercise 3
+test.  Please submit the repository to a separate **Supplementary Exercise 2
 Extra Credit** link.
