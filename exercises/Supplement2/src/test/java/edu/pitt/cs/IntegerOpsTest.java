@@ -3,6 +3,7 @@ package edu.pitt.cs;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.When;
+import com.pholser.junit.quickcheck.generator.InRange;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import org.junit.runner.RunWith;
 
@@ -22,7 +23,22 @@ public class IntegerOpsTest {
 	@Property(trials = 1000)
 	public void testAdd(int x, int y) {
 		// System.out.println("testAdd x='" + x + "', y='" + y + "'");
+		
 		// TODO: Fill in.
+
+		/*
+		 * You may be tempted to put an if statement here, but an if statement in a test
+		 * case is always a code smell. The fact that you are performing different
+		 * execution steps depending on a prior precondition says that you did not set
+		 * up the preconditions properly. In this case, the preconditions should be that
+		 * x >= 0 and y >= 0, but that precondition is not getting enforced, causing
+		 * irrelevant values to flow into the execution steps. The @InRange QuickCheck
+		 * annotation allows you to constrain generated values:
+		 * 
+		 * https://pholser.github.io/junit-quickcheck/site/1.0/usage/constraining.html
+		 * 
+		 * Please read the above URL to constain x, y values so that they are >= 0.
+		 */
 	}
 	
 	/**
@@ -35,7 +51,19 @@ public class IntegerOpsTest {
 	@Property(trials = 1000)
 	public void testSubtract(int x, int y) {
 		// System.out.println("testSubtract x='" + x + "', y='" + y + "'");
+		
 		// TODO: Fill in.
+
+		/*
+		 * In this case, you cannot use the @InRange annotation since the constraint
+		 * involves multiple parameters. There is no pre-defined way to do this in
+		 * QuickCheck as each parameter is generated independently. For this, you will
+		 * need to merge the two x, y parameters to a single parameter which is the
+		 * tuple (x, y) and then write a custom tuple generator that satisfies that
+		 * constraint. But, we will not go that far. Let's just use an if statement,
+		 * fully knowing that there are better ways. We will learn to write custom
+		 * generators soon.
+		 */
 	}
 
 }
