@@ -81,6 +81,8 @@ QuickCheck is an extension to JUnit, and the JUnit classes can be run invoking M
 mvn test
 ```
 
+You should see one failure in testIsValidHTMLTrue as a result:
+
 ```
 -------------------------------------------------------
  T E S T S
