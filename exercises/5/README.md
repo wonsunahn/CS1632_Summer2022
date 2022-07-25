@@ -757,18 +757,11 @@ the execution target is set to TestRunner instead of DrunkCarnivalShooter:
 target = edu.pitt.cs.TestRunner
 ```
 
-TestRunner "emulates" what the JUnit framework would do on the DrunkCarnivalShooterTest
-class, using Java reflection to search for @Before, @Test, and @After methods.
-I had to write that custom class myself because the JUnit framework itself does
-not work nicely with JPF.  JUnit has a habit of catching all exceptions thrown
-by your tested method or assertions, so that it can aggregate them and report
-them later in a list.  This behavior prevents exceptions from being thrown 
-directly at JPF, and JPF needs exceptions thrown at it to know when failures
-occurred and be able to generate traces for those failures.  TestRunner does not
-catch any exceptions, so any test failure (in fact the very first failure) will
-result in an exception and a trace in JPF.  TLDR.
+TestRunner.java is a class I wrote that invokes the JUnitCore.runClasses API on
+our DrunkCarnivalShooterTest.java JUnit class.  The returned Result object can
+be probed to enumerate failures.
 
-Now let's focus our attention on DrunkCarnivalShooterTest.java. As is, it is
+Now let's focus our attention on DrunkCarnivalShooterTest.java itself. As is, it is
 incomplete and does not do much.  Fill in the
 locations with // TODO comments inside DrunkCarnivalShooterTest.java.  In the
 setUp method, use the Verify API such that you enumerate all the 16 possible
@@ -806,7 +799,7 @@ JavaPathfinder core system v8.0 (rev 471fa3b7c6a9df330160844e6c2e4ebb4bf06b6c) -
 ====================================================== system under test
 TestRunner.main()
 
-====================================================== search started: 3/31/22 3:35 PM
+====================================================== search started: 7/25/22 6:41 PM
 testShoot(DrunkCarnivalShooterTest): Failure in Round #0:        ||               (targetChoice=0): expected:<0> but was:<-1>
 testShoot(DrunkCarnivalShooterTest): Failure in Round #0:        ||          ||   (targetChoice=0): expected:<1> but was:<0>
 testShoot(DrunkCarnivalShooterTest): Failure in Round #0:        ||    ||         (targetChoice=0): expected:<1> but was:<0>
@@ -827,53 +820,104 @@ instructions:       473440
 max memory:         155MB
 loaded code:        classes=284,methods=4039
 
-====================================================== search finished: 7/25/22 5:34 PM
+====================================================== search finished: 7/25/22 6:41 PM
 
 ```
 
-### Applying JPF on a JUnit test to obtain the trace
+Each line in the "search" section is a JUnit test failure recorded for a particular path explored by JPF.
+In this case, each path corresponds to a configuration of targets and the target choice.
 
-You need the below files for this section, which you will have to **copy over**
-to your GitHub Classroom repository because they are not there yet:
+### Obtaining a trace of a JUnit Failure from JPF
 
-* [JUnitTestShoot.macos.jpf](JUnitTestShoot.macos.jpf)
-* [JUnitTestShoot.win.jpf](JUnitTestShoot.win.jpf)
-* [src/TestShoot.java](src/TestShoot.java)
+You will notice that in the above output, the "results" section reports
+"no errors detected".  And since no errors were detected, no traces were collected.
+Why did this happen?  The JUnit framework has a habit of catching all exceptions thrown
+by your tested method or assertions resulting in test failures, so that it can aggregate them and report
+them later.  If it did not catch exceptions, the JUnit framework would have to stop at
+the very first failure!  This behavior prevents exceptions from being thrown 
+directly at JPF, and JPF needs exceptions thrown at it to know when failures
+occurred and be able to generate traces for those failures.
 
-Now you will notice that the list of errors are being emitted by the JUnit
-TestRunner class and JPF itself does not detect any errors.  That is because
-the JUnit framework catches all exceptions emanating from test cases and
-handles them by adding a Failure to the list of Failures to return to the
-TestRunner.  This is so that the JUnit framework does not throw an exception
-and crash on the first test failure it encounters --- and continues
-execution to find other failures.  If JPF does not detect any exceptions,
-then it cannot signal any errors.
-
-Now this behavior is sometimes unhelpful becauase then JPF will not print
-the trace of instructions up to that failure, which is crucial in
-understanding how you got there.  So what can you do?  Well, now that you
-know which test case is failing, you can try directly calling that test case
-in the TestRunner without going through JUnit.  The class TestShoot does
-exactly that: it creates the JUnit test object, calls setUp(), and then
-calls the test method, just like JUnit would, but without catching the
-exceptions.  That way you will be able to get a trace leading up to the
-failure.
-
-In order to invoke TestShoot, do the following on Windows machines:
+In order to obtain a trace, uncomment the following line from JUnit.win.jpf, or JUnit.macos.jpf if you are Mac/Linux:
 
 ```
-bash runJPF.bat JUnitTestShoot.win.jpf
+#Main method arguments.  Enable if you want to obtain a trace of a JUnit faiure.
+#target.args = trace
 ```
 
-Or the following on Mac/Linux machines:
+So that the argument "trace" is passed to TestRunner.java.
 
+In that case, TestRunner "emulates" what the JUnit framework would do on the DrunkCarnivalShooterTest
+class, rather than invoke JUnitCore.  It does this by using Java reflection to search for @Before, @Test, and @After methods,
+and invoking them in the order JUnit would have.
+The important thing is, in this emulation mode, TestRunner does not
+catch any exceptions, so any test failure (in fact the very first failure) will
+result in an exception and a trace in JPF.
+
+The output of runJPF.bat or runJPF.sh after making the above change would look like:
 
 ```
-bash runJPF.sh JUnitTestShoot.macos.jpf
+.\runJPF.bat .\JUnit.win.jpf
+
+D:\github\cs1632\CS1632_Summer2022\exercises\5>java -ea -jar jpf-core/build/RunJPF.jar +site=./site.properties .\JUnit.win.jpf 
+JavaPathfinder core system v8.0 (rev 2f8f3c4dc847b8945fc13d2cb60896fc9c34265b) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+edu.pitt.cs.TestRunner.main("trace")
+
+====================================================== search started: 7/25/22 6:58 PM
+TRACE GENERATION FOR FIRST FAILURE
+
+
+====================================================== error 1
+gov.nasa.jpf.vm.NoUncaughtExceptionsProperty
+java.lang.reflect.InvocationTargetException: java.lang.AssertionError
+        at org.junit.Assert.fail(org/junit/Assert.java:88)
+        ...
+
+====================================================== trace #1
+------------------------------------------------------ transition #0 thread: 0
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"ROOT" ,1/1,isCascaded:false}
+...
+------------------------------------------------------ transition #1 thread: 0
+gov.nasa.jpf.vm.choice.IntIntervalGenerator[id="verifyGetInt(II)",isCascaded:false,0..3,delta=+1,cur=0]
+...
+------------------------------------------------------ transition #2 thread: 0
+gov.nasa.jpf.vm.BooleanChoiceGenerator[[id="verifyGetBoolean",isCascaded:false,{>false,true}]
+...
+------------------------------------------------------ transition #3 thread: 0
+gov.nasa.jpf.vm.BooleanChoiceGenerator[[id="verifyGetBoolean",isCascaded:false,{false,>true}]
+...
+------------------------------------------------------ transition #4 thread: 0
+gov.nasa.jpf.vm.BooleanChoiceGenerator[[id="verifyGetBoolean",isCascaded:false,{>false,true}]
+...
+------------------------------------------------------ transition #5 thread: 0
+gov.nasa.jpf.vm.BooleanChoiceGenerator[[id="verifyGetBoolean",isCascaded:false,{>false,true}]
+,,,
+------------------------------------------------------ transition #6 thread: 0
+gov.nasa.jpf.vm.choice.IntIntervalGenerator[id="verifyGetInt(II)",isCascaded:false,0..2,delta=+1,cur=2]
+      [2 insn w/o sources]
+  edu/pitt/cs/DrunkCarnivalShooterImpl.java:49 : int offsetNum = rand.nextInt(3) - 1;
+...
+edu/pitt/cs/DrunkCarnivalShooterImpl.java:114 : remainingTargetNum--;
+...
+edu/pitt/cs/DrunkCarnivalShooterImpl.java:95 : remainingTargetNum--;
+...
+edu/pitt/cs/DrunkCarnivalShooterTest.java:112 : assertEquals(failString, standing, shooter.getRemainingTargetNum());
+
+====================================================== results
+error #1: gov.nasa.jpf.vm.NoUncaughtExceptionsProperty "java.lang.reflect.InvocationTargetException: java...."
+...
 ```
 
+Through this trace you can see what choices were made on this path,
+starting from generation of the targetChoice and target states, ending in the
+random number generation for the fuzzing.  You can also see on the 
+trace remainingTargetNum, a key variable in this defect, getting decremented
+twice.
 
-Debug DrunkCarnivalShooterImpl to remove the errors.  Now if you play the
+Debug DrunkCarnivalShooterImpl using this trace.  Now if you play the
 game, you should not see any defects.
 
 ### Lessons on Model Checking
