@@ -21,7 +21,7 @@
 
 # Exercise 5 - Static Analysis Part 1: Linters and Bug Finders
 
-** UNDER CONSTRUCTION DO NOT START YET **
+**UNDER CONSTRUCTION DO NOT START YET**
 
 Summer Semester 2022 - Exercise 5
 
