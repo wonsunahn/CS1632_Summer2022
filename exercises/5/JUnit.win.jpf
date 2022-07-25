@@ -5,6 +5,9 @@ sourcepath = src/main/java;src/test/java
 # It's like running any JUnit test except that now we are running each test case many times for each path explored by Java Path Finder.
 target = edu.pitt.cs.TestRunner
 
+# Main method arguments.  Enable if you want to obtain a trace of a JUnit faiure.
+#target.args = trace
+
 # Main method arguments.  Enable if you want to JUnit test the buggy version.
 #target.args = buggy
 
