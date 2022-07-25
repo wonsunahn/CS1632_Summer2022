@@ -23,11 +23,18 @@ public class TestRunner {
 	 * @throws InstantiationException
 	 */
 	@SuppressWarnings("rawtypes")
-	public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+	public static void main(String[] args)
+			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+
+		boolean trace = false;
 
 		if (args.length > 0 && args[0].equals("buggy")) {
 			Config.setBuggy(true);
 			System.out.println("TESTING BUGGY IMPLEMENTATION\n");
+		}
+		if (args.length > 0 && args[0].equals("trace")) {
+			trace = true;
+			System.out.println("TRACE GENERATION FOR FIRST FAILURE\n");
 		}
 
 		ArrayList<Class> classesToTest = new ArrayList<Class>();
@@ -39,24 +46,38 @@ public class TestRunner {
 		// to run them.
 
 		for (Class c : classesToTest) {
-			Object testObject = c.newInstance();
-			assert testObject != null;
-			for (Method method : c.getMethods()) {
-				if (method.isAnnotationPresent(Before.class)) {
-					// do something
-					method.invoke(testObject);
+			if (trace == false) {
+				// Invoke JUnitCore to obtain list of failures
+
+				Result r = JUnitCore.runClasses(c);
+
+				// Print out any failures for this class.
+				for (Failure f : r.getFailures()) {
+					System.out.println(f.toString());
+					// System.out.println(f.getTrace());
 				}
-			}
-			for (Method method : c.getMethods()) {
-				if (method.isAnnotationPresent(Test.class)) {
-					// do something
-					method.invoke(testObject);
+			} else {
+				// Call @Test methods directly to generate a trace for first failure
+				
+				Object testObject = c.newInstance();
+				assert testObject != null;
+				for (Method method : c.getMethods()) {
+					if (method.isAnnotationPresent(Before.class)) {
+						// do something
+						method.invoke(testObject);
+					}
 				}
-			}
-			for (Method method : c.getMethods()) {
-				if (method.isAnnotationPresent(After.class)) {
-					// do something
-					method.invoke(testObject);
+				for (Method method : c.getMethods()) {
+					if (method.isAnnotationPresent(Test.class)) {
+						// do something
+						method.invoke(testObject);
+					}
+				}
+				for (Method method : c.getMethods()) {
+					if (method.isAnnotationPresent(After.class)) {
+						// do something
+						method.invoke(testObject);
+					}
 				}
 			}
 		}
