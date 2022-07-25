@@ -19,14 +19,6 @@ Summer Semester 2022 - Supplementary Exercise 3
 
 DUE: July 28 (Thursday), 2022 11:30 AM
 
-**GitHub Classroom Link:** TBD
-
-When you accept the assignment in GitHub Classroom, you will be asked to create
-a new Team, or choose an existing Team.  If you are the first group member to
-accept the assignment, please create a new Team.  Otherwise, please look for an
-existing Team that your partner has already created.  Please use the team name
-that you put on your **Partnership Contract**.  If you haven't yet decided on a
-name, choose any name your prefer --- just keep it classroom friendly.
 
 ## Description
 
