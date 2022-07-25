@@ -12,6 +12,11 @@
   - [Applying Java Pathfinder (JPF)](#applying-java-pathfinder-jpf)
     - [Applying JPF on Rand](#applying-jpf-on-rand)
     - [Applying JPF on DrunkCarnivalShooter](#applying-jpf-on-drunkcarnivalshooter)
+    - [Applying JPF on JUnit to Unit Test DrunkCarnivalShooter](#applying-jpf-on-junit-to-unit-test-drunkcarnivalshooter)
+    - [Obtaining a trace of a JUnit Failure from JPF](#obtaining-a-trace-of-a-junit-failure-from-jpf)
+    - [Lessons on Model Checking](#lessons-on-model-checking)
+  - [Submission](#submission-1)
+  - [GradeScope Feedback](#gradescope-feedback)
   - [Resources](#resources-1)
 
 # Exercise 5 - Static Analysis Part 1: Linters and Bug Finders
@@ -492,6 +497,7 @@ To run JPF on DrunkCarnivalShooter do (.bat for WIndows, .sh for Mac/Linux):
 ```
 ```
 bash runJPF.sh DrunkCarnivalShooter.jpf
+```
 
 If you run the above, JPF will display an output similar to the following:
 
