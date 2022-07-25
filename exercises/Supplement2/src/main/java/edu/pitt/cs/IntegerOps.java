@@ -3,7 +3,8 @@ package edu.pitt.cs;
 public class IntegerOps {
 	/**
 	 * Computes the sum of x and y. On integer overflow, where the return value
-	 * becomes larger than Integer.MAX_VALUE, 0 is returned instead.
+	 * becomes larger than Integer.MAX_VALUE or less thatn Integer.MIN_VALUE, 0 is
+	 * returned instead.
 	 * 
 	 * @param x First integer
 	 * @param y Second integer
@@ -16,7 +17,8 @@ public class IntegerOps {
 
 	/**
 	 * Computes the different of x and y. On integer overflow, where the return
-	 * value becomes larger than Integer.MAX_VALUE, 0 is returned instead.
+	 * value becomes larger than Integer.MAX_VALUE or less thatn Integer.MIN_VALUE,
+	 * 0 is returned instead.
 	 * 
 	 * @param x First integer
 	 * @param y Second integer
