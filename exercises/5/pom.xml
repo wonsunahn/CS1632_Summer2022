@@ -9,6 +9,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>localrepository</id>
+      <url>file://${project.basedir}/jpf-core/build</url>
+    </repository>
+  </repositories>
+
   <dependencies>
 
     <dependency>
@@ -32,6 +39,14 @@
       <artifactId>hamcrest</artifactId>
       <version>2.2</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>gov.nasa</groupId>
+      <artifactId>jpf-core</artifactId>
+      <version>1.0.0</version>
+      <systemPath>${pom.basedir}/jpf-core/build/jpf-classes.jar</systemPath>
+      <scope>system</scope>
     </dependency>
 
   </dependencies>

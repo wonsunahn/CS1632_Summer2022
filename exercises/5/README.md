@@ -12,11 +12,6 @@
   - [Applying Java Pathfinder (JPF)](#applying-java-pathfinder-jpf)
     - [Applying JPF on Rand](#applying-jpf-on-rand)
     - [Applying JPF on DrunkCarnivalShooter](#applying-jpf-on-drunkcarnivalshooter)
-    - [Applying JPF on JUnit to Unit Test DrunkCarnivalShooter](#applying-jpf-on-junit-to-unit-test-drunkcarnivalshooter)
-    - [Applying JPF on a JUnit test to obtain the trace](#applying-jpf-on-a-junit-test-to-obtain-the-trace)
-    - [Lessons on Model Checking](#lessons-on-model-checking)
-  - [Submission](#submission-1)
-  - [GradeScope Feedback](#gradescope-feedback)
   - [Resources](#resources-1)
 
 # Exercise 5 - Static Analysis Part 1: Linters and Bug Finders
@@ -327,10 +322,13 @@ which is the divide-by-zero exception on the calculation for "c".
 Using JPF, you can *always* deterministically find the defect using systematic
 state space exploration.
 
-To run JPF on Rand do:
+To run JPF on Rand do (.bat for WIndows, .sh for Mac/Linux):
 
 ```
-java -ea -jar jpf-core/build/RunJPF.jar +site=./site.properties Rand.jpf
+.\runJPF.bat Rand.jpf
+```
+```
+bash runJPF.sh Rand.jpf
 ```
 
 If you see the following output, you are not using Java 8 to run JPF:
@@ -485,10 +483,15 @@ the code and identify why each error occurred.
 ### Applying JPF on DrunkCarnivalShooter
 
 Now let's cd out of the Rand directory to the root directory to once again work
-on DrunkCarnivalShooter.  The following script applies JPF to
-DrunkCarnivalShooter.
+on DrunkCarnivalShooter.  The following command applies JPF to the program.
 
-java -ea -jar jpf-core/build/RunJPF.jar +site=./site.properties DrunkCarnivalShooter.jpf
+To run JPF on DrunkCarnivalShooter do (.bat for WIndows, .sh for Mac/Linux):
+
+```
+.\runJPF.bat DrunkCarnivalShooter.jpf
+```
+```
+bash runJPF.sh DrunkCarnivalShooter.jpf
 
 If you run the above, JPF will display an output similar to the following:
 
@@ -541,23 +544,37 @@ wish, you can test a larger set of numbers beyond 0-3.  It is just going to
 generate more states and take longer (the flipside being you will be able to
 model check your program against a larger set of inputs).
 
-Now let's try running runJPF.bat one more time like the above.  This will show
-a new error message due to an exception:
+Now let's recompile:
 
 ```
-====================================================== search started: 10/25/21 10:01 PM
-Round #0:  ||    ||    ||    ||
+mvn compile
+```
+
+And try running JPF one more time:
+
+```
+.\runJPF.bat DrunkCarnivalShooter.jpf
+```
+```
+bash runJPF.sh DrunkCarnivalShooter.jpf
+```
+
+This will show a new error message due to an exception:
+
+```
+====================================================== search started: 7/25/22 4:24 PM
+Round #0:  ||    ||    ||    ||  
 Choose your target (0-3):
 
 ====================================================== error 1
 gov.nasa.jpf.vm.NoUncaughtExceptionsProperty
 java.lang.ArrayIndexOutOfBoundsException: -1
-        at java.util.ArrayList.elementData(java/util/ArrayList.java:422)
-        at java.util.ArrayList.get(java/util/ArrayList.java:435)
-        at DrunkCarnivalShooterImpl.isTargetStanding(DrunkCarnivalShooterImpl.java:124)
-        at DrunkCarnivalShooterImpl.takeDownTarget(DrunkCarnivalShooterImpl.java:108)
-        at DrunkCarnivalShooterImpl.shoot(DrunkCarnivalShooterImpl.java:89)
-        at DrunkCarnivalShooterImpl.main(DrunkCarnivalShooterImpl.java:163)
+        at java.util.ArrayList.elementData(java/util/ArrayList.java:424)
+        at java.util.ArrayList.get(java/util/ArrayList.java:437)
+        at edu.pitt.cs.DrunkCarnivalShooterImpl.isTargetStanding(edu/pitt/cs/DrunkCarnivalShooterImpl.java:127)
+        at edu.pitt.cs.DrunkCarnivalShooterImpl.takeDownTarget(edu/pitt/cs/DrunkCarnivalShooterImpl.java:111)
+        at edu.pitt.cs.DrunkCarnivalShooterImpl.shoot(edu/pitt/cs/DrunkCarnivalShooterImpl.java:92)
+        at edu.pitt.cs.DrunkCarnivalShooterImpl.main(edu/pitt/cs/DrunkCarnivalShooterImpl.java:173)
 ...
 ```
 
@@ -570,22 +587,18 @@ did Rand.trace.  The trace should look like:
 ====================================================== trace #1
 ------------------------------------------------------ transition #0 thread: 0
 gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"ROOT" ,1/1,isCascaded:false}
-      [50072 insn w/o sources]
-DrunkCarnivalShooterImpl.java:152 : DrunkCarnivalShooterImpl shooter = new DrunkCarnivalShooterImpl();
+      [6345 insn w/o sources]
+  edu/pitt/cs/DrunkCarnivalShooterImpl.java:153 : DrunkCarnivalShooterImpl shooter = new DrunkCarnivalShooterImpl();
 ...
 ------------------------------------------------------ transition #1 thread: 0
-gov.nasa.jpf.vm.choice.BreakGenerator {id:"MAX_TRANSITION_LENGTH" ,1/1,isCascaded:false}
-      [48603 insn w/o sources]
+gov.nasa.jpf.vm.choice.IntIntervalGenerator[id="verifyGetInt(II)",isCascaded:false,0..3,delta=+1,cur=0]
+      [2 insn w/o sources]
+  edu/pitt/cs/DrunkCarnivalShooterImpl.java:166 : t = Verify.getInt(0, 3);
 ...
 ------------------------------------------------------ transition #2 thread: 0
-gov.nasa.jpf.vm.choice.IntIntervalGenerator[id="verifyGetInt(II)",isCascaded:false,0..3,delta=+1,cur=0]
-      [22 insn w/o sources]
-DrunkCarnivalShooterImpl.java:158 : int t = Verify.getInt(0, 3);
-...
------------------------------------------------------- transition #3 thread: 0
 gov.nasa.jpf.vm.choice.IntIntervalGenerator[id="verifyGetInt(II)",isCascaded:false,0..2,delta=+1,cur=0]
-      [64 insn w/o sources]
-DrunkCarnivalShooterImpl.java:47 : int offsetNum = rand.nextInt(3) - 1;
+      [2 insn w/o sources]
+  edu/pitt/cs/DrunkCarnivalShooterImpl.java:48 : int offsetNum = rand.nextInt(3) - 1;
 ...
 ```
 
@@ -610,20 +623,35 @@ explore all thread interleavings.  If you don't know what that means, don't
 worry about it.  It is beyond the scope of this class.  Feel free to ask if you
 are curious :).
 
-In the above trace, it is important to understand transitions #2 and #3.  What
-would be transition #2 with choice interval 0..3?  It would be the
+In the above trace, it is important to understand transitions #1 and #2.  What
+would be transition #1 with choice interval 0..3?  It would be the
 Verify.getInt(0, 3) that replaced the scan of user input.  And according to the
-trace it returned 0 ("cur=0").  What would be transition #3 with choice
+trace it returned 0 ("cur=0").  What would be transition #2 with choice
 interval 0..2?  It would be the rand.nextInt(3) used to add randomness to the
 shooting target, and in the trace it also returned 0 ("cur=0").  So it's the
 case where the user chose target 0 and the randomness of the shooting pulled
 the bullet to the left.  What's on the left side of target 0?  That should help
 you track down the problem.  **Hint: What happens when t becomes -1 in isTargetStanding?**
 
-Once you fix these bugs, try running runJPF.bat one more time.  Now that you
-have fixed the buggy state JPF runs for much longer.  In fact, JPF is going to
-fall into an infinite loop and generate an infinite number of states (observed
-by the ever increasing Round number).
+Once you fix these bugs, try running JPF one more time (but be ready to quickly press Ctrl+C
+because it is going to fall into an infinite loop):
+
+```
+mvn compile
+```
+
+Then one of the below:
+
+```
+.\runJPF.bat DrunkCarnivalShooter.jpf
+```
+```
+bash runJPF.sh DrunkCarnivalShooter.jpf
+```
+
+Press Ctrl+C now, or your process is going to run out of memory!  Since JPF does 
+not encounter any exceptions it will run indefinitely and also generate an infinite
+number of states (observed by the infinite number of rounds):
 
 ```
 ...
@@ -713,15 +741,11 @@ We will choose the latter option.
 
 ### Applying JPF on JUnit to Unit Test DrunkCarnivalShooter
 
-Now we are not systems testing DrunkCarnivalShooter.  We want to invoke JUnit
-on DrunkCarnivalShooter.  The script to do that is as follows:
+To run JPF on JUnit do (.bat for WIndows, .sh for Mac/Linux):
 
 ```
-runJPF.bat JUnit.win.jpf
+.\runJPF.bat JUnit.win.jpf
 ```
-
-For Mac or Linux:
-
 ```
 bash runJPF.sh JUnit.macos.jpf
 ```
@@ -730,11 +754,22 @@ If you peek into JUnit.win.jpf (or JUnit.macos.jpf), you will notice that now
 the execution target is set to TestRunner instead of DrunkCarnivalShooter:
 
 ```
-target = TestRunner
+target = edu.pitt.cs.TestRunner
 ```
 
-TestRunner invokes JUnit on the DrunkCarnivalShooterTest test class.  As is,
-DrunkCarnivalShooterTest.java is incomplete and does not do much.  Fill in the
+TestRunner "emulates" what the JUnit framework would do on the DrunkCarnivalShooterTest
+class, using Java reflection to search for @Before, @Test, and @After methods.
+I had to write that custom class myself because the JUnit framework itself does
+not work nicely with JPF.  JUnit has a habit of catching all exceptions thrown
+by your tested method or assertions, so that it can aggregate them and report
+them later in a list.  This behavior prevents exceptions from being thrown 
+directly at JPF, and JPF needs exceptions thrown at it to know when failures
+occurred and be able to generate traces for those failures.  TestRunner does not
+catch any exceptions, so any test failure (in fact the very first failure) will
+result in an exception and a trace in JPF.  TLDR.
+
+Now let's focus our attention on DrunkCarnivalShooterTest.java. As is, it is
+incomplete and does not do much.  Fill in the
 locations with // TODO comments inside DrunkCarnivalShooterTest.java.  In the
 setUp method, use the Verify API such that you enumerate all the 16 possible
 states that the game can be in, as well as the target choice made by the user
@@ -764,7 +799,7 @@ If you implemented the test properly, you should see a long list of errors for
 different combinations:
 
 ```
-wahn:CS1632_DrunkCarnivalShooter_Solution wahn$ bash runJPF.sh JUnit.macos.jpf 
+$ bash runJPF.sh JUnit.macos.jpf 
 JavaPathfinder core system v8.0 (rev 471fa3b7c6a9df330160844e6c2e4ebb4bf06b6c) - (C) 2005-2014 United States Government. All rights reserved.
 
 
@@ -792,7 +827,7 @@ instructions:       473440
 max memory:         155MB
 loaded code:        classes=284,methods=4039
 
-====================================================== search finished: 3/31/22 3:35 PM
+====================================================== search finished: 7/25/22 5:34 PM
 
 ```
 
