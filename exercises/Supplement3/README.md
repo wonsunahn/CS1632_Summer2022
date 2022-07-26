@@ -1,23 +1,23 @@
 - [CS 1632 - Software Quality Assurance](#cs-1632---software-quality-assurance)
-  * [Description](#description)
-  * [Connecting to thoth.cs.pitt.edu](#connecting-to-thothcspittedu)
-  * [Building](#building)
-  * [Testing and Debugging Memory Errors](#testing-and-debugging-memory-errors)
-    + [Turning off ASLR (Address Space Layout Randomization)](#turning-off-aslr-address-space-layout-randomization)
-    + [Using Google ASAN (Address Sanitizer)](#using-google-asan-address-sanitizer)
-    + [Debugging](#debugging)
-    + [Comparing Google ASAN with Valgrind](#comparing-google-asan-with-valgrind)
-  * [Testing and Debugging Datarace Errors](#testing-and-debugging-datarace-errors)
-    + [Using Google TSAN (Thread Sanitizer)](#using-google-tsan-thread-sanitizer)
-    + [Debugging](#debugging-1)
-  * [Submission](#submission)
-  * [Division of Work](#division-of-work)
-  * [Resources](#resources)
+  - [Description](#description)
+  - [Connecting to thoth.cs.pitt.edu](#connecting-to-thothcspittedu)
+  - [Building](#building)
+  - [Testing and Debugging Memory Errors](#testing-and-debugging-memory-errors)
+    - [Turning off ASLR (Address Space Layout Randomization)](#turning-off-aslr-address-space-layout-randomization)
+    - [Using Google ASAN (Address Sanitizer)](#using-google-asan-address-sanitizer)
+    - [Debugging](#debugging)
+    - [Comparing Google ASAN with Valgrind](#comparing-google-asan-with-valgrind)
+  - [Testing and Debugging Datarace Errors](#testing-and-debugging-datarace-errors)
+    - [Using Google TSAN (Thread Sanitizer)](#using-google-tsan-thread-sanitizer)
+    - [Debugging](#debugging-1)
+  - [Submission](#submission)
+  - [Division of Work](#division-of-work)
+  - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
 Summer Semester 2022 - Supplementary Exercise 3
 
-DUE: July 28 (Thursday), 2022 11:30 AM
+DUE: August 2 (Tuesday), 2022 11:30 AM
 
 **GitHub Classroom Link:** TBD
 
