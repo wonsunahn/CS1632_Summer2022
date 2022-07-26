@@ -100,7 +100,7 @@ comments.  Leave other boxes unchecked.
 1. Save the resulting file into "D3Test.java" under the
    src/test/java/edu/pitt/cs test source directory.  .
 
-1. Add the following line to the top of "RedditCatsTest.java":
+1. Add the following line to the top of "D3Test.java":
    ```
    package edu.pitt.cs;
    ```
