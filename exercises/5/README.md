@@ -25,7 +25,7 @@ Summer Semester 2022 - Exercise 5
 
 * DUE: August 2 (Tuesday), 2022 11:30 AM
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/mUqz37o4
 
 ## Description
 
