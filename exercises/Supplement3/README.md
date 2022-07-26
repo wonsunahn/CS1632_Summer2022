@@ -17,7 +17,7 @@
 # CS 1632 - Software Quality Assurance
 Summer Semester 2022 - Supplementary Exercise 3
 
-DUE: August 2 (Tuesday), 2022 11:30 AM
+DUE: July 28 (Thursday), 2022 11:30 AM
 
 **GitHub Classroom Link:** TBD
 
