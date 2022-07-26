@@ -21,8 +21,6 @@
 
 # Exercise 5 - Static Analysis Part 1: Linters and Bug Finders
 
-**UNDER CONSTRUCTION DO NOT START YET**
-
 Summer Semester 2022 - Exercise 5
 
 * DUE: August 2 (Tuesday), 2022 11:30 AM
