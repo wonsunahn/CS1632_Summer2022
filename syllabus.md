@@ -75,7 +75,7 @@ AFIST = [_A Friendly Introduction to Software Testing_](software-quality-assuran
 * Class 2: In-class Supplementary Exercise 4: Dockers
   * Prerequisite: Security Testing Lecture (READING: AFIST, Chapter 20) + TopHat Questions
 
-* Midterm 2 on GradeScope: August 3 (Friday) 10:00 AM - August 5 (Sunday) 11:59 PM **(Tentative)**
+* Midterm 2 on GradeScope: August 5 (Friday) 10:00 AM - August 7 (Sunday) 11:59 PM **(Tentative)**
   * Check out the **[study guide](/study_guides/midterm_2_study_guide.md)**!
   * Will be posted as link named "Midterm 2" at Friday 10:00 AM.
   * You will choose a 3 hour span to complete exam within the above 3-day period.
