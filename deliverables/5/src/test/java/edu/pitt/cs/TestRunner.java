@@ -14,14 +14,18 @@ public class TestRunner {
 	 * Main method.
 	 *
 	 * @param args IGNORED, kept for compatibility
-	 * @throws InvocationTargetException 
-	 * @throws IllegalAccessException 
+	 * @throws InvocationTargetException
+	 * @throws IllegalAccessException
 	 */
 	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {
 
+		// The TestRunner is used only for running the JPFJUnitTest JUnit class on JPF.
+		// You can use "mvn test" to run JPFJUnitTest as a plain JUnit test without JPF.
+		Config.setTestType(TestType.JPF_ON_JUNIT);
+
 		if (args.length != 2) {
-			System.out.println("Usage: TestRunner <logic type> <test type>\n");
+			System.out.println("Usage: TestRunner <logic type (impl | solution | buggy)> <test type (junit | trace)>");
 			return;
 		}
 
@@ -40,25 +44,20 @@ public class TestRunner {
 		}
 
 		if (args[1].equals("junit")) {
-			Config.setTestType(TestType.JUNIT);
-			System.out.println("WITH PLAIN JUNIT\n");
-		} else if (args[1].equals("jpf")) {
-			Config.setTestType(TestType.JPF_ON_JUNIT);
-			System.out.println("WITH JPF ON JUNIT\n");
+			System.out.println("WITH JPF USING JUNIT FRAMEWORK\n");
 
-			// Invoke JUnit on BeanCounterLogicTest to get all errors
-			Result r = JUnitCore.runClasses(BeanCounterLogicTest.class);
+			// Invoke JUnit framework on JPFJUnitTest to aggreggate all errors
+			Result r = JUnitCore.runClasses(JPFJUnitTest.class);
 			for (Failure f : r.getFailures()) {
 				System.out.println(f.toString());
 				// System.out.println(f.getTrace());
 			}
 			return;
-		} else if (args[1].equals("jpftrace")) {
-			Config.setTestType(TestType.JPF_ON_JUNIT);
-			System.out.println("WITH JPF ON JUNIT WITH TRACING\n");
+		} else if (args[1].equals("trace")) {
+			System.out.println("WITH JPF USING JUNIT EMULATION FOR TRACING\n");
 
-			// Invoke tests in BeanCounterLogicTest directly to get a trace
-			BeanCounterLogicTest test = new BeanCounterLogicTest();
+			// Invoke tests in JPFJUnitTest using Java reflection to get a trace
+			JPFJUnitTest test = new JPFJUnitTest();
 			test.setUp(); // @BeforeClass
 			for (Method method : test.getClass().getMethods()) {
 				if (method.isAnnotationPresent(Test.class)) {
@@ -71,30 +70,6 @@ public class TestRunner {
 		} else {
 			System.out.println("\nUsage: TestRunner <logic type> <test type>\n");
 			return;
-		}
-
-		assert (args[1].equals("junit"));
-
-		ArrayList<Class> classesToTest = new ArrayList<Class>();
-
-		// ADD ANY CLASSES YOU WISH TO TEST HERE
-		classesToTest.add(GradeScopeTest.class);
-		classesToTest.add(BeanCounterLogicTest.class);
-
-		// For all test classes added, loop through and use JUnit
-		// to run them.
-
-		for (Class c : classesToTest) {
-			System.out.println("[" + c.getName() + "]\n");
-			Result r = JUnitCore.runClasses(c);
-
-			// Print out any failures for this class.
-
-			for (Failure f : r.getFailures()) {
-				System.out.println(f.toString());
-				// System.out.println(f.getTrace());
-			}
-			System.out.println("");
 		}
 	}
 }

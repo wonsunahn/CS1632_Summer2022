@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * the possible random path taken by the beans during operation.
  */
 
-public class BeanCounterLogicTest {
+public class JPFJUnitTest {
 	private static BeanCounterLogic logic; // The core logic of the program
 	private static Bean[] beans; // The beans in the machine
 	private static String failString; // A descriptive fail string for assertions

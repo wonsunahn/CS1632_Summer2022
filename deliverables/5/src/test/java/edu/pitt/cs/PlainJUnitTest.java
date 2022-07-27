@@ -21,7 +21,7 @@ import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class GradeScopeTest {
+public class PlainJUnitTest {
 
 	private final int[] beanCounts = { 0, 2, 20, 200 };
 	private final int[] logicSlotCounts = { 1, 10, 20 };
