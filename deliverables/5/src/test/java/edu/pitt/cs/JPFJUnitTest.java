@@ -45,9 +45,6 @@ public class JPFJUnitTest {
 			 * how to use the Verify API, look at:
 			 * https://github.com/javapathfinder/jpf-core/wiki/Verify-API-of-JPF
 			 */
-			// slotCount = Verify.getInt(1, 5);
-			// beanCount = Verify.getInt(0, 3);
-			// isLuck = Verify.getBoolean();
 		} else {
 			assert (false);
 		}
