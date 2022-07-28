@@ -497,49 +497,58 @@ To run JPF on DrunkCarnivalShooter do (.bat for WIndows, .sh for Mac/Linux):
 bash runJPF.sh DrunkCarnivalShooter.jpf
 ```
 
-If you run the above, JPF will display an output similar to the following:
+But stop right there.  If you run that command, you will fall into an
+infinite loop at this point!
+
+That is because in the DrunkCarnivalShooterImpl main method, if the argument
+"test" is passed (meaning that we are in JPF test mode), I remove all
+calls to Scanner which scans user input, and hard coded the user selected
+target to "1" when in test mode:
 
 ```
+Scanner scanner = null;
+if (args.length == 1 && args[0].equals("test")) {
+    // Do not create an input scanner when running with JPF.
+} else {
+    scanner = new Scanner(System.in);
+}
 ...
-====================================================== search started: 7/25/22 2:02 PM
-Round #0:  ||    ||    ||    ||
-Choose your target (0-3):
-
-====================================================== results
-no errors detected
-...
+int t = 1;
+if (scanner == null) {
+    // TODO: Enumerate all possible values of t using JPF Verify.
+} else {
+    t = scanner.nextInt();
+}
 ```
 
-No errors, yay!  So are we done?  No, far from it.  From the search output, you
-can see that the search ended immediately at the first point of user input.
-That is because JPF is not designed to receive user input from the terminal.
-Instead, JPF uses a set of APIs under the Verify class (gov.nasa.jpf.vm.Verify)
+Why did I have to do this?  That is because JPF is not designed to take user
+input.  If it were to take user input, then the test coverage of JPF will be
+beholden to what input the user chooses.  The gaol of JPF (and any other
+model checker) is to verify the program **regardless of user input**.
+
+JPF provides a set of APIs under the Verify class (gov.nasa.jpf.vm.Verify)
 to specify the set of user input(s) we want to test.  Then, it **exhaustively
-tests the program for each user input**.
+tests the program for each user input**, by creating a new path to explore
+for each input.
 
-In order to be able to use this feature, we first have to import the class at
-the top of DrunkCarnivalShooterImpl.java:
+The reason that JPF falls into an infinite loop in this case is because the
+t is hard coded to 1, and by repeatedly choosing target 1, the game is never
+going to terminate.  Now not all programs with infinite loops generate an
+infinite number of program states, so there is something about this program
+that generates an infinite number of states... but more on that later. :)
+
+For now, let's use the Verify APIs to fix the problem.  In order to be able
+to use them, we first have to import the class at the top of
+DrunkCarnivalShooterImpl.java:
 
 ```
 import gov.nasa.jpf.vm.Verify;
 ```
 
-Then replace calls to Scanner with calls to Verify only when the commandline
-argument "test" is passed to the program.  The "test" argument will put the
-program in test mode and not in play mode.  You can see "test" is already
-configured as the commandline argument in the target.args entry in
-[DrunkCarnivalShooter.jpf](DrunkCarnivalShooter.jpf).
-
 In terms of the code, all you have to do is on the // TODO comment, call:
 
 ```
 t = Verify.getInt(0, 3);
-```
-
-Instead of:
-
-```
-t = scanner.nextInt();
 ```
 
 The above will direct JPF to generate 4 states each where t is set to 0, 1, 2,
