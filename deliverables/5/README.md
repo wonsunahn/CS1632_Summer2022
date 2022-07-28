@@ -20,15 +20,13 @@
 
 # CS 1632 - Software Quality Assurance
 
-**UNDER CONSTRUCTION.  DO NOT START YET.**
-
 Summer Semester 2022
 
 DUE: August 9 (Tuesday), 2022 11:30 AM
 
 Due to the grading deadline, there is no late submission.  Please work with your partner to complete the project.
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/5U519nYb
 
 ## Overview
 
