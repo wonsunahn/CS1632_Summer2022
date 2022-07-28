@@ -753,13 +753,13 @@ get the following failures:
    ------------------------------------------------------ transition #0 thread: 0
    gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"ROOT" ,1/1,isCascaded:false}
 	 [3168 insn w/o sources]
-     edu/pitt/cs/TestRunner.java:25 : Config.setTestType(TestType.JPF_ON_JUNIT);
+   edu/pitt/cs/TestRunner.java:25 : Config.setTestType(TestType.JPF_ON_JUNIT);
    ...
-     edu/pitt/cs/JPFJUnitTest.java:138 : assertEquals(failString + ". Check on in-flight bean count",
-      [2 insn w/o sources]
-  edu/pitt/cs/JPFJUnitTest.java:139 : inFlightExpected, inFlightObserved);
-  edu/pitt/cs/JPFJUnitTest.java:138 : assertEquals(failString + ". Check on in-flight bean count",
-      [169 insn w/o sources]
+   edu/pitt/cs/JPFJUnitTest.java:138 : assertEquals(failString + ". Check on in-flight bean count",
+   [2 insn w/o sources]
+   edu/pitt/cs/JPFJUnitTest.java:139 : inFlightExpected, inFlightObserved);
+   edu/pitt/cs/JPFJUnitTest.java:138 : assertEquals(failString + ". Check on in-flight bean count",
+   [169 insn w/o sources]
 
    ====================================================== snapshot #1
    ...
