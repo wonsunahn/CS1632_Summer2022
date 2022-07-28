@@ -512,12 +512,17 @@ if (args.length == 1 && args[0].equals("test")) {
 } else {
     scanner = new Scanner(System.in);
 }
-...
-int t = 1;
-if (scanner == null) {
-    // TODO: Enumerate all possible values of t using JPF Verify.
-} else {
-    t = scanner.nextInt();
+while (true) {
+    System.out.println(shooter.getRoundString());
+    System.out.println("Choose your target (0-3): ");
+    int t = 1;
+    if (scanner == null) {
+        // TODO: Enumerate all possible values of t using JPF Verify.
+    } else {
+        t = scanner.nextInt();
+    }
+    // Shoot the target
+    ...
 }
 ```
 
