@@ -1,1 +1,1 @@
-java -ea -jar jpf-core/build/RunJPF.jar +site=./site.properties +target.args=impl,jpf $1
+java -ea -jar jpf-core/build/RunJPF.jar +site=./site.properties +target.args=impl,junit $1

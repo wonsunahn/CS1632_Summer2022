@@ -536,13 +536,13 @@ command.
 On Windows:
 
 ```
-$ runJPF.bat BeanCounter.win.jpf
+.\runJPF.bat BeanCounter.win.jpf
 ```
 
 Or on Mac or Linux:
 
 ```
-$ bash runJPF.sh BeanCounter.macos.jpf
+bash runJPF.sh BeanCounter.macos.jpf
 ```
 
 That should print out an output like the following:
@@ -552,27 +552,18 @@ JavaPathfinder core system v8.0 (rev 471fa3b7c6a9df330160844e6c2e4ebb4bf06b6c) -
 
 
 ====================================================== system under test
-edu.pitt.cs.TestRunner.main("impl","jpf")
+edu.pitt.cs.TestRunner.main("impl","junit")
 
 ====================================================== search started: 7/27/22 2:00 PM
-TESTING YOUR IMPLEMENTATION 
-Usage: TestRunner <logic type> <test type>
+TESTING YOUR IMPLEMENTATION WITH JPF USING JUNIT FRAMEWORK
 
+Failure in (slotCount=0, beanCount=0, isLucky=false):
 
 ====================================================== results
 no errors detected
 
 ====================================================== statistics
-elapsed time:       00:00:00
-states:             new=1,visited=0,backtracked=1,end=1
-search:             maxDepth=1,constraints=0
-choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=0
-heap:               new=396,released=15,maxLive=0,gcCycles=1
-instructions:       3366
-max memory:         245MB
-loaded code:        classes=64,methods=1343
-
-====================================================== search finished: 7/27/22 2:00 PM
+...
 ```
 
 After inserting the Verify calls, JPF should give you an output like this:
@@ -582,21 +573,29 @@ JavaPathfinder core system v8.0 (rev 471fa3b7c6a9df330160844e6c2e4ebb4bf06b6c) -
 
 
 ====================================================== system under test
-TestRunner.main("impl","jpf")
+edu.pitt.cs.TestRunner.main("impl","junit")
 
-====================================================== search started: 10/28/21 3:39 AM
-TESTING YOUR IMPLEMENTATION WITH JPF ON JUNIT
+====================================================== search started: 7/27/22 10:14 PM
+TESTING YOUR IMPLEMENTATION WITH JPF USING JUNIT FRAMEWORK
 
 Failure in (slotCount=1, beanCount=0, isLucky=false):
 Failure in (slotCount=1, beanCount=0, isLucky=true):
 Failure in (slotCount=1, beanCount=1, isLucky=false):
 Failure in (slotCount=1, beanCount=1, isLucky=true):
-Failure in (slotCount=1, beanCount=2, isLucky=false):
 ...
-[Truncated for brevity]
+Failure in (slotCount=5, beanCount=3, isLucky=false):
+Failure in (slotCount=5, beanCount=3, isLucky=true):
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+...
 ```
 
-Please remove the println in your final submission.
+You can see how JPF exhaustively tries out all possible combinations of machine
+configurations.  Since the println was just for demonstration purposes, please
+remove it in your final submission and replace it with the actual test.
 
 Now we are confident that all our @Test JUnit methods will benefit from
 exhaustive testing.  Please go ahead and **complete all test cases in
@@ -608,22 +607,20 @@ and it will tell you which configuration led to the failure.
 
 ### Applying Model Checking to Your / Solution / Buggy Implementations
 
-Now that you have completed JPFJUnitTest you can run that JUnit class
-on top of JPF to test your BeanCounterLogicImpl implementation.  Not only that,
-you can also run the test against a buggy implementation and a solution
-implementation, to verify that your test cases themselves pass the solution
-without failures and also detect all the bugs in the buggy implementation.
-Here is how:
+After you have completed JPFJUnitTest, you can run that JUnit class on top of
+JPF to test your BeanCounterLogicImpl implementation.  Not only that, you can
+also run the test against the buggy implementation and the solution
+implementation, just like you did for "mvn test".  Here is how:
 
 1. To test your BeanCounterLogicImpl implementation on Windows:
 
     ```
-    $ runJPF.bat BeanCounter.win.jpf
+    .\runJPF.bat BeanCounter.win.jpf
     ```
     Or on Mac or Linux:
 
     ```
-    $ bash runJPF.sh BeanCounter.macos.jpf
+    bash runJPF.sh BeanCounter.macos.jpf
     ```
 
     Since this is before completing BeanCounterLogicImpl and BeanImpl, you will

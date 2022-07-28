@@ -4,12 +4,16 @@ import java.util.Random;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import gov.nasa.jpf.vm.Verify;
+
 import static org.junit.Assert.*;
 
 /**
  * Code by @author Wonsun Ahn
  * 
- * <p>Uses the Java Path Finder model checking tool to check BeanCounterLogic in
+ * <p>
+ * Uses the Java Path Finder model checking tool to check BeanCounterLogic in
  * various modes of operation. It checks BeanCounterLogic in both "luck" and
  * "skill" modes for various numbers of slots and beans. It also goes down all
  * the possible random path taken by the beans during operation.
@@ -41,6 +45,9 @@ public class JPFJUnitTest {
 			 * how to use the Verify API, look at:
 			 * https://github.com/javapathfinder/jpf-core/wiki/Verify-API-of-JPF
 			 */
+			// slotCount = Verify.getInt(1, 5);
+			// beanCount = Verify.getInt(0, 3);
+			// isLuck = Verify.getBoolean();
 		} else {
 			assert (false);
 		}
@@ -64,7 +71,10 @@ public class JPFJUnitTest {
 
 	/**
 	 * Test case for void reset(Bean[] beans).
-	 * Preconditions: None.
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
 	 * Execution steps: Call logic.reset(beans).
 	 * Invariants: If beanCount is greater than 0,
 	 *             remaining bean count is beanCount - 1
@@ -74,6 +84,7 @@ public class JPFJUnitTest {
 	 *             remaining bean count is 0
 	 *             in-flight bean count is 0
 	 *             in-slot bean count is 0.
+	 * </pre>
 	 */
 	@Test
 	public void testReset() {
@@ -97,11 +108,15 @@ public class JPFJUnitTest {
 
 	/**
 	 * Test case for boolean advanceStep().
-	 * Preconditions: None.
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
 	 * Execution steps: Call logic.reset(beans).
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 * Invariants: After each advanceStep(),
 	 *             all positions of in-flight beans are legal positions in the logical coordinate system.
+	 * </pre>
 	 */
 	@Test
 	public void testAdvanceStepCoordinates() {
@@ -110,11 +125,15 @@ public class JPFJUnitTest {
 
 	/**
 	 * Test case for boolean advanceStep().
-	 * Preconditions: None.
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
 	 * Execution steps: Call logic.reset(beans).
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 * Invariants: After each advanceStep(),
 	 *             the sum of remaining, in-flight, and in-slot beans is equal to beanCount.
+	 * </pre>
 	 */
 	@Test
 	public void testAdvanceStepBeanCount() {
@@ -123,22 +142,29 @@ public class JPFJUnitTest {
 
 	/**
 	 * Test case for boolean advanceStep().
-	 * Preconditions: None.
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
 	 * Execution steps: Call logic.reset(beans).
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 * Invariants: After the machine terminates,
 	 *             remaining bean count is 0
 	 *             in-flight bean count is 0
 	 *             in-slot bean count is beanCount.
+	 * </pre>
 	 */
 	@Test
 	public void testAdvanceStepPostCondition() {
 		// TODO: Implement
 	}
-	
+
 	/**
 	 * Test case for void lowerHalf()().
-	 * Preconditions: None.
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
 	 * Execution steps: Call logic.reset(beans).
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 *                  Call logic.lowerHalf().
@@ -150,15 +176,19 @@ public class JPFJUnitTest {
 	 *             slots in the machine contain only the lower half of the original beans.
 	 *             Remember, if there were an odd number of beans, (N+1)/2 beans should remain.
 	 *             Check each slot for the expected number of beans after having called logic.lowerHalf().
+	 * </pre>
 	 */
 	@Test
 	public void testLowerHalf() {
 		// TODO: Implement
 	}
-	
+
 	/**
 	 * Test case for void upperHalf().
-	 * Preconditions: None.
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
 	 * Execution steps: Call logic.reset(beans).
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 *                  Call logic.upperHalf().
@@ -170,20 +200,26 @@ public class JPFJUnitTest {
 	 *             slots in the machine contain only the upper half of the original beans.
 	 *             Remember, if there were an odd number of beans, (N+1)/2 beans should remain.
 	 *             Check each slot for the expected number of beans after having called logic.upperHalf().
+	 * </pre>
 	 */
 	@Test
 	public void testUpperHalf() {
 		// TODO: Implement
 	}
-	
+
 	/**
 	 * Test case for void repeat().
-	 * Preconditions: The machine is operating in skill mode.
-	 * Execution steps: Call logic.reset(beans).
+	 * 
+	 * <pre>
+	 * Preconditions: logic has been initialized with an instance of BeanCounterLogic.
+	 *                beans has been initialized with an array of Bean objects.
+	 * Execution steps: If beans are created in skill mode (if isLuck is false),
+	 *                  Call logic.reset(beans).
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 *                  Call logic.repeat();
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
-	 * Invariants: Bean count in each slot is identical after the first run and second run of the machine. 
+	 * Invariants: Bean count in each slot is identical after the first run and second run of the machine.
+	 * </pre>
 	 */
 	@Test
 	public void testRepeat() {

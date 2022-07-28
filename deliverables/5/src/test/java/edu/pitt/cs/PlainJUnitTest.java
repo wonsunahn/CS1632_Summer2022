@@ -27,7 +27,7 @@ public class PlainJUnitTest {
 	private final int[] logicSlotCounts = { 1, 10, 20 };
 	private BeanCounterLogic[] logics;
 	private Random rand;
-	
+
 	ByteArrayOutputStream out;
 	PrintStream stdout;
 
@@ -75,7 +75,7 @@ public class PlainJUnitTest {
 			logics[i] = BeanCounterLogic.createInstance(logicSlotCounts[i]);
 		}
 		rand = new Random(42);
-		
+
 		out = new ByteArrayOutputStream();
 		stdout = System.out;
 		try {
@@ -90,12 +90,14 @@ public class PlainJUnitTest {
 		logics = null;
 		rand = null;
 		out = null;
-		
+
 		System.setOut(stdout);
 	}
 
 	/**
-	 * Test reset(Bean[]). 
+	 * Test reset(Bean[]).
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 * Execution steps: For each logic, and for each bean count in beanCounts,
 	 *                  Call createBeans to create lucky beans for the slot count and bean count
@@ -108,6 +110,7 @@ public class PlainJUnitTest {
 	 *             remaining bean count is 0
 	 *             in-flight bean count is 0
 	 *             in-slot bean count is 0.
+	 * </pre>
 	 */
 	@Test
 	public void testReset() {
@@ -123,7 +126,7 @@ public class PlainJUnitTest {
 				int remainingExpected = (beanCount > 0) ? beanCount - 1 : 0;
 				int inFlightExpected = (beanCount > 0) ? 1 : 0;
 				int inSlotsExpected = 0;
-				
+
 				assertEquals(failString + ". Check on remaining bean count",
 						remainingExpected, remainingObserved);
 				assertEquals(failString + ". Check on in-flight bean count",
@@ -136,6 +139,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test advanceStep() in luck mode.
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 * Execution steps: For each logic, and for each bean count in beanCounts,
 	 *                  Call createBeans to create lucky beans for the slot count and bean count
@@ -143,7 +148,8 @@ public class PlainJUnitTest {
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 * Invariants: After each advanceStep(),
 	 *             1) The remaining bean count, 2) the in-flight bean count, and 3) the in-slot bean count
-	 *             all reflect the correct values at that step of the simulation. 
+	 *             all reflect the correct values at that step of the simulation.
+	 * </pre>
 	 */
 	@Test
 	public void testAdvanceStepLuckMode() {
@@ -152,6 +158,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test advanceStep() in skill mode.
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 *                rand.nextGaussian() always returns 0 (to fix skill level to 5).
 	 * Execution steps: For the logic with 10 slot counts,
@@ -160,7 +168,8 @@ public class PlainJUnitTest {
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 * Invariants: After the machine terminates,
 	 *             logics.getSlotBeanCount(5) returns 200,
-	 *             logics.getSlotBeanCount(i) returns 0, where i != 5. 
+	 *             logics.getSlotBeanCount(i) returns 0, where i != 5.
+	 * </pre>
 	 */
 	@Test
 	public void testAdvanceStepSkillMode() {
@@ -169,6 +178,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test lowerHalf() in luck mode.
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 * Execution steps: For the logic with 10 slot counts, and for each bean count in beanCounts,
 	 *                  Call createBeans to create lucky beans for the slot count and bean count
@@ -178,7 +189,8 @@ public class PlainJUnitTest {
 	 *                  after having called logic.lowerHalf().
 	 *                  Call logic.lowerHalf().
 	 *                  Construct an observedSlotCounts array that stores current bean counts for each slot.
-	 * Invariants: expectedSlotCounts matches observedSlotCounts exactly. 
+	 * Invariants: expectedSlotCounts matches observedSlotCounts exactly.
+	 * </pre>
 	 */
 	@Test
 	public void testLowerHalf() {
@@ -187,6 +199,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test upperHalf() in luck mode.
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 * Execution steps: For the logic with 10 slot counts, and for each bean count in beanCounts,
 	 *                  Call createBeans to create lucky beans for the slot count and bean count
@@ -196,7 +210,8 @@ public class PlainJUnitTest {
 	 *                  after having called logic.upperHalf().
 	 *                  Call logic.upperHalf().
 	 *                  Construct an observedSlotCounts array that stores current bean counts for each slot.
-	 * Invariants: expectedSlotCounts matches observedSlotCounts exactly. 
+	 * Invariants: expectedSlotCounts matches observedSlotCounts exactly.
+	 * </pre>
 	 */
 	@Test
 	public void testUpperHalf() {
@@ -205,6 +220,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test repeat() in skill mode.
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 * Execution steps: For the logic with 10 slot counts, and for each bean count in beanCounts,
 	 *                  Call createBeans to create skilled beans for the slot count and bean count
@@ -214,7 +231,8 @@ public class PlainJUnitTest {
 	 *                  Call logic.repeat().
 	 *                  Call logic.advanceStep() in a loop until it returns false (the machine terminates).
 	 *                  Construct an observedSlotCounts array that stores current bean counts for each slot.
-	 * Invariants: expectedSlotCounts matches observedSlotCounts exactly. 
+	 * Invariants: expectedSlotCounts matches observedSlotCounts exactly.
+	 * </pre>
 	 */
 	@Test
 	public void testRepeat() {
@@ -223,6 +241,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test getAverageSlotBeanCount() in luck mode.
+	 * 
+	 * <pre>
 	 * Preconditions: logics for each slot count in logicSlotCounts are created.
 	 * Execution steps: For the logic with 10 slot counts,
 	 *                  Call createBeans to create 200 lucky beans
@@ -231,8 +251,9 @@ public class PlainJUnitTest {
 	 *                  Store an expectedAverage, an average of the slot number for each bean.
 	 *                  Store an observedAverage, the result of logic.getAverageSlotBeanCount().
 	 *                  Store an idealAverage, which is 4.5.
-	 * Invariants: Math.abs(expectedAverage - observedAverage) < 0.01.
-	 *             Math.abs(idealAverage - observedAverage) < 0.5.
+	 * Invariants: {@literal Math.abs(expectedAverage - observedAverage) < 0.01}.
+	 *             {@literal Math.abs(idealAverage - observedAverage) < 0.5}.
+	 * </pre>
 	 */
 	@Test
 	public void testGetAverageSlotBeanCount() {
@@ -241,6 +262,8 @@ public class PlainJUnitTest {
 
 	/**
 	 * Test main(String[] args).
+	 * 
+	 * <pre>
 	 * Preconditions: None.
 	 * Execution steps: Check invariants after either calling
 	 *                  BeanCounterLogicImpl.main("10", "500", "luck"), or
@@ -248,6 +271,7 @@ public class PlainJUnitTest {
 	 * Invariants: There are two lines of output.
 	 *             There are 10 slot counts on the second line of output.
 	 *             The sum of the 10 slot counts is equal to 500.
+	 * </pre>
 	 */
 	@Test
 	public void testMain() {

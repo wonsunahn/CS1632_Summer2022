@@ -13,9 +13,9 @@ public class TestRunner {
 	/**
 	 * Main method.
 	 *
-	 * @param args IGNORED, kept for compatibility
-	 * @throws InvocationTargetException
-	 * @throws IllegalAccessException
+	 * @param args (impl | solution | buggy) (junit | trace).
+	 * @throws InvocationTargetException Thrown when @Test method invocation fails.
+	 * @throws IllegalAccessException Thrown when @Test method invocation is an illegal access.
 	 */
 	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {
