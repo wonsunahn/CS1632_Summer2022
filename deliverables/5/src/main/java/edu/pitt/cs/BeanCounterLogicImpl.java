@@ -6,26 +6,33 @@ import java.util.Random;
 /**
  * Code by @author Wonsun Ahn
  * 
- * <p>BeanCounterLogic: The bean counter, also known as a quincunx or the Galton
+ * <p>
+ * BeanCounterLogic: The bean counter, also known as a quincunx or the Galton
  * box, is a device for statistics experiments named after English scientist Sir
  * Francis Galton. It consists of an upright board with evenly spaced nails (or
  * pegs) in a triangular form. Each bean takes a random path and falls into a
  * slot.
  *
- * <p>Beans are dropped from the opening of the board. Every time a bean hits a
+ * <p>
+ * Beans are dropped from the opening of the board. Every time a bean hits a
  * nail, it has a 50% chance of falling to the left or to the right. The piles
  * of beans are accumulated in the slots at the bottom of the board.
  * 
- * <p>This class implements the core logic of the machine. The MainPanel uses the
+ * <p>
+ * This class implements the core logic of the machine. The MainPanel uses the
  * state inside BeanCounterLogic to display on the screen.
  * 
- * <p>Note that BeanCounterLogic uses a logical coordinate system to store the
+ * <p>
+ * Note that BeanCounterLogic uses a logical coordinate system to store the
  * positions of in-flight beans.For example, for a 4-slot machine:
+ * 
+ * <pre>
  *                      (0, 0)
  *               (0, 1)        (1, 1)
  *        (0, 2)        (1, 2)        (2, 2)
  *  (0, 3)       (1, 3)        (2, 3)       (3, 3)
  * [Slot0]       [Slot1]       [Slot2]      [Slot3]
+ * </pre>
  */
 
 public class BeanCounterLogicImpl implements BeanCounterLogic {

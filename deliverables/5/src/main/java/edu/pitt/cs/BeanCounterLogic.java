@@ -10,19 +10,19 @@ public interface BeanCounterLogic {
 	 */
 	public static BeanCounterLogic createInstance(int slotCount) {
 		switch (Config.getLogicType()) {
-		case IMPL:
-			return new BeanCounterLogicImpl(slotCount);
-		case BUGGY:
-			return new BeanCounterLogicBuggy(slotCount);
-		case SOLUTION:
-			return new BeanCounterLogicSolution(slotCount);
-		default:
+			case IMPL:
+				return new BeanCounterLogicImpl(slotCount);
+			case BUGGY:
+				return new BeanCounterLogicBuggy(slotCount);
+			case SOLUTION:
+				return new BeanCounterLogicSolution(slotCount);
+			default:
 		}
 		return null;
 	}
-	
+
 	// Public interface of BeanCounterLogic
-	
+
 	// No bean in that particular Y coordinate
 	public static final int NO_BEAN_IN_YPOS = -1;
 
