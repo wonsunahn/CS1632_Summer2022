@@ -1,7 +1,7 @@
 # CS 1632 - Software Quality Assurance
 Summer Semester 2022 - Supplementary Exercise 4
 
-* DUE: Aug 4 (Thursday), 2022 11:30 AM 
+* DUE: Aug 4 (Thursday), 2022 1:15 PM 
 
 ## Description
 
